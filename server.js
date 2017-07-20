@@ -64,6 +64,22 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+app.post("/register", (req, res) => {
+  let name = req.body.name
+  let email = req.body.email
+  let password = req.body.password
+  knex('users')
+    .returning('id')
+    .insert({
+      name: name,
+      email: email,
+      password: password
+    })
+    .then((results) => {
+      res.json(results);
+  });
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
