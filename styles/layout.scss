@@ -2,7 +2,7 @@ body {
   background-color: #EEE;
 
   nav {
-    background-color: #4286f4;
+    background-color: #639eff;
     position: fixed;
     top: 0;
     width: 100%;
@@ -15,7 +15,7 @@ body {
     }
 
     .name {
-      color: #eee;
+      color: white;
       float: left;
       margin: .5em .25em;
       height: 100%;
@@ -31,7 +31,7 @@ body {
   }
 
   .form-box {
-    ;
+    padding: 10em;
   }
 
 }
