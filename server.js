@@ -44,6 +44,26 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// List
+app.get("/list", (req, res) => {
+  res.render("list");
+});
+
+// Main
+app.get("/main", (req, res) => {
+  res.render("main");
+});
+
+// Login
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// Register
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
