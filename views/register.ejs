@@ -6,6 +6,26 @@
   <body>
     <header><% include ./partials/_header %></header>
 
+    <div class='form-box'>
+      <form action='/register' method='POST'>
+        <div>
+          <label for='name'></label>
+          <input type='text' id='name' name=''>
+        </div>
+        <div>
+          <label for='email'></label>
+          <input type='email' id='email' name=''>
+        </div>
+        <div>
+          <label for='password'></label>
+          <input type='password' id='password' name=''>
+        </div>
+        <div class='button'>
+        <button type='submit'>Register</button>
+      </div>
+      </form>
+    </div>
+
   </body>
 
 </html>
