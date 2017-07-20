@@ -8,9 +8,9 @@ body {
     width: 100%;
 
     img {
-      height: 4em;
-      width: 4em;
-      margin: .5em;
+      height: 3.5em;
+      width: 3.5em;
+      margin: .75em .15em .75em 1.5em;
       float: left;
     }
 
@@ -26,12 +26,20 @@ body {
     button {
       float: right;
       margin: 1.5em 2em;
+      border-radius: .25em;
+      background-color: white;
     }
 
   }
 
   .form-box {
-    padding: 10em;
+    border: solid .15em black;
+    margin: 10em;
+    height: 20em;
+  }
+
+  form {
+    margin: 5em;
   }
 
 }
