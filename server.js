@@ -64,6 +64,16 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+// User Create Table Page
+app.get("/users", (req, res) => {
+  res.render("users");
+});
+
+// User Generates a list
+app.post("/users", (req, res) => {
+
+});
+
 app.post("/register", (req, res) => {
   let name = req.body.name
   let email = req.body.email

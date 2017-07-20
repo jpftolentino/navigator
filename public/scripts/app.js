@@ -17,7 +17,7 @@ $(() => {
     // let list_id = item.list_id
     $("<div>").text(list[0].title).appendTo($("body"));
     let newList = list[0].title;
-    $("<div>").text(newList).appendTo($("body"));
+    // $("<div>").text(newList).appendTo($("body"));
 
     for(item in list){
       if(list[item].title === newList){
