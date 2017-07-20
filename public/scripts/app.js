@@ -1,7 +1,7 @@
 $(() => {
   $.ajax({
     method: "GET",
-    url: "/api/list"
+    url: "/api/users"
   }).done((list) => {
 
     for(item of list) {
