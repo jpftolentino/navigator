@@ -5,3 +5,4 @@ public/styles
 *.sqlite3
 server.js
 PSEUDO_CODE
+register.ejs
