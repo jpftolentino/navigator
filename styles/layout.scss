@@ -1,7 +1,37 @@
 body {
   background-color: #EEE;
 
-  h1 {
-    color: #244751;
+  nav {
+    background-color: #4286f4;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    img {
+      height: 4em;
+      width: 4em;
+      margin: .5em;
+      float: left;
+    }
+
+    .name {
+      color: #eee;
+      float: left;
+      margin: .5em .25em;
+      height: 100%;
+      font-size: 2em;
+      line-height: 1.5;
+    }
+
+    button {
+      float: right;
+      margin: 1.5em 2em;
+    }
+
   }
+
+  .form-box {
+    ;
+  }
+
 }
