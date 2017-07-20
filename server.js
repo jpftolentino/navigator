@@ -68,12 +68,14 @@ app.post("/register", (req, res) => {
   let name = req.body.name
   let email = req.body.email
   let password = req.body.password
+  let handle = req.body.handle
   knex('users')
     .returning('id')
     .insert({
       name: name,
       email: email,
-      password: password
+      password: password,
+      handle: handle
     })
     .then((results) => {
       res.json(results);
