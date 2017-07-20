@@ -7,10 +7,12 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    knex.select('*')
-      .from('list')
+    knex('list')
+      .select('*')
       .join('users', {'list.fk_users_id': 'users.id'})
       .join('task', {'list.list_id': 'task.fk_list_id'})
+      .orderBy('list_id')
+      .orderBy('task_id')
       .then((results) => {
         res.json(results);
     });
