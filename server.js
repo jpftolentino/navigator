@@ -54,20 +54,22 @@ app.use("/api/task", taskRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render('index')
-
+  let user_id = { user_id: req.session.user_id };
+  res.render('index', user_id)
 });
 
 // List
 app.get("/list/:id", (req, res) => {
-  res.render("list_show");
+  let user_id = { user_id: req.session.user_id };
+  res.render("list_show", user_id);
 });
 
 // --> Login & Registration Logic <-- //
 
 // Login
 app.get("/login", (req, res) => {
-  res.render("login");
+  let user_id = { user_id: req.session.user_id };
+  res.render("login", user_id);
 });
 
 app.post("/login", (req, res) => {
@@ -93,17 +95,22 @@ app.post("/login", (req, res) => {
           .where('email', user_email)
           .then((user) => {
             req.session.user_id = user[0].id
-            res.redirect('/list')
+            res.redirect('/')
           })
         }
       }
+    }
+    if (!loginCredentials) {
+      res.status(403).send('Please enter a valid email/password')
+      return;
     }
   })
 })
 
 // Register
 app.get("/register", (req, res) => {
-  res.render("register");
+  let user_id = { user_id: req.session.user_id };
+  res.render("register", user_id);
 });
 
 app.post("/register", (req, res) => {
@@ -142,7 +149,7 @@ app.post("/register", (req, res) => {
       .then((user) => {
         //res.json(results);
         req.session.user_id = user[0];
-        res.redirect("/list")
+        res.redirect("/")
     });
   }
 });
@@ -160,7 +167,8 @@ app.get("/logout", (req, res) => {
 
 // User Profile Page
 app.get("/users", (req, res) => {
-  res.render("users");
+  let user_id = { user_id: req.session.user_id };
+  res.render("users", user_id);
   // knex('users')
   //   .select('*')
   //   .where('id', 1)
@@ -181,7 +189,8 @@ app.get("/users/myList", (req, res) => {
 
 // User Create List Page
 app.get("/newList", (req, res) => {
-  res.render("newList");
+  let user_id = { user_id: req.session.user_id };
+  res.render("newList", user_id);
 
 })
 

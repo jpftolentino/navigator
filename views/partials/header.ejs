@@ -18,18 +18,27 @@
   <body>
 
     <nav id='nav-bar'>
-      <a href='/main'>
+      <a href='/'>
       <img class='logo' src='/images/NavigatorLogo.png'>
       <span class='name'>Navigator</span>
     </a>
 
+    <% if (!user_id) { %>
       <a href='/register'>
         <span class='register'>Register</span>
       </a>
       <a href='/login'>
         <span class='login'>Login</span>
       </a>
+    <% } else { %>
+      <a href='/logout'>
+        <span class='logout'>Logout</span>
+      </a>
+      <a href='/users'>
+        <span class='profile'>Profile</span>
+      </a>
 
+    <% } %>
 
       <!-- Insert form for Login/Register or Profile Icon -->
 
