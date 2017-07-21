@@ -45,6 +45,10 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 
+<<<<<<< HEAD
+=======
+// Mount all resource routes
+>>>>>>> master
 // Mounts list resource to url
 app.use("/api/users", usersRoutes(knex));
 
@@ -53,15 +57,24 @@ app.use("/api/task", taskRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+<<<<<<< HEAD
   let user_id = req.session.user_id
   res.render('index')
   res.render("index");
+=======
+  res.render('index')
+
+>>>>>>> master
 });
 
 // List
 app.get("/list/:id", (req, res) => {
+<<<<<<< HEAD
   let sessionID = { sessID:req.params.id};
   res.render("list_show", sessionID);
+=======
+  res.render("list_show");
+>>>>>>> master
 });
 
 // --> Login & Registration Logic <-- //

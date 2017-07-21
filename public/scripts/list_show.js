@@ -6,7 +6,15 @@ $(() => {
 
       let fixId = location.pathname.split('/');
       let id = fixId[2];
-      let title = task[id].title;
+      let title = ""
+
+      for(item in task){
+        let listID = task[item].fk_list_id;
+        if(id == listID){
+          title = task[item].title;
+        }
+      }
+
       $('<div>').text(title).appendTo($('body'));
 
       $('<ul>').appendTo($('body'));
