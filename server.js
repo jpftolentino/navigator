@@ -64,13 +64,35 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
-// User Create Table Page
+// User Profile Page
 app.get("/users", (req, res) => {
   res.render("users");
+  knex('users')
+    .select('*')
+    .where('id', 1)
+    .then((results) => {
+      res.json(results);
+    })
 });
 
+// Display Users Lists on User Page
+app.get("/users/myList", (req, res) => {
+  knex('list')
+    .select('*')
+    .where('fk_users_id', 1)
+    .then((results) => {
+      res.json(results);
+    })
+})
+
+// User Create List Page
+app.get("/newList", (req, res) => {
+  res.render("newList");
+
+})
+
 // User Generates a list
-app.post("/users", (req, res) => {
+app.post("/newList", (req, res) => {
   let user = 2
   let title = req.body.title
   let category = req.body.category
@@ -83,7 +105,7 @@ app.post("/users", (req, res) => {
       title: title,
       category: category,
       time: time
-    }),
+    })
 
 });
 
