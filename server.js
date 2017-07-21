@@ -59,16 +59,51 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+app.post("/login", (req, res) => {
+  let email = req.body.email
+  let password = req.body.password
+  knex('users')
+    .returning('id')
+    .insert({
+      name: name,
+      email: email,
+      password: password,
+      handle: handle
+    })
+    .then((results) => {
+      res.json(results);
+  });
+});
+
 // Register
 app.get("/register", (req, res) => {
   res.render("register");
 });
 
 app.post("/register", (req, res) => {
+  let invalidFormSubmit = false
   let name = req.body.name
   let email = req.body.email
   let password = req.body.password
   let handle = req.body.handle
+
+  if (!email || !password) {
+    let invalidFormSubmit = true
+    res.status(401).send('Please enter a valid email/password')
+    return
+  }
+
+  knex.select().table('users')
+  .then((result) => {
+    for (let user of result) {
+      if (email === user.email) {
+        let invalidFormSubmit = true
+        res.status(403).send('This email is already registered')
+        return
+      }
+    }
+  })
+
   knex('users')
     .returning('id')
     .insert({
