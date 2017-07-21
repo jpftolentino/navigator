@@ -8,24 +8,24 @@ body {
     width: 100%;
 
     img {
-      height: 3.5em;
-      width: 3.5em;
-      margin: .75em .15em .75em 1.5em;
+      height: 2.75em;
+      width: 2.75em;
+      margin: .5em .15em .25em 1.5em;
       float: left;
     }
 
     .name {
       color: white;
       float: left;
-      margin: .5em .25em;
+      margin: .25em .25em;
       height: 100%;
-      font-size: 2em;
+      font-size: 1.75em;
       line-height: 1.5;
     }
 
     button {
       float: right;
-      margin: 1.5em 2em;
+      margin: 1em 2em;
       border-radius: .25em;
       background-color: white;
     }
@@ -36,6 +36,17 @@ body {
     border: solid .15em black;
     margin: 10em;
     height: 20em;
+  }
+
+  .create-list {
+    border: solid .15em black;
+    margin: 10em;
+    height: 20em;
+
+    input {
+      width: 20em;
+
+    }
   }
 
   form {
