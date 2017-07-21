@@ -49,17 +49,32 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  let user_id = req.session.user_id
+  if (user_id) {
+    res.redirect('/list')
+  } else {
+    res.redirect('/login')
+  }
 });
 
 // List
 app.get("/list", (req, res) => {
-  res.render("list");
+  let user_id = req.session.user_id
+  if (user_id) {
+    res.render('list')
+  } else {
+    res.redirect('/login')
+  }
 });
 
 // Main
 app.get("/main", (req, res) => {
-  res.render("main");
+  let user_id = req.session.user_id
+  if (user_id) {
+    res.render('main')
+  } else {
+    res.redirect('/login')
+  }
 });
 
 // Login
