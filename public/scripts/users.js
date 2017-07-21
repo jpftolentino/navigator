@@ -1,17 +1,17 @@
 
 $(document).ready((list) => {
 
-  $(() => {
-    $.ajax({
-      method: "GET",
-      url: "/users"
-    }).done (user) => {
-
-      $("<span class='username'>").text(user.name)
-
-    }
-
-  })
+  // $(() => {
+  //   $.ajax({
+  //     method: "GET",
+  //     url: "/users"
+  //   }).done (user) => {
+  //
+  //     $("<span class='username'>").text(user.name).appendTo('.user-box')
+  //
+  //   }
+  //
+  // })
 
   $(() => {
     $.ajax({
