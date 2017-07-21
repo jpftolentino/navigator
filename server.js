@@ -2,12 +2,14 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
-const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const sass        = require("node-sass-middleware");
-const app         = express();
+const PORT          = process.env.PORT || 8080;
+const ENV           = process.env.ENV || "development";
+const express       = require("express");
+const bodyParser    = require("body-parser");
+const sass          = require("node-sass-middleware");
+const app           = express();
+const cookieSession = require("cookie-session");
+const bcrypt        = require("bcrypt");
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -36,6 +38,12 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ["key 1"],
+  maxAge: 24 * 60 * 60 * 1000
+}));
+
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 
@@ -60,20 +68,36 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
+  let loginCredentials = false
   let email = req.body.email
   let password = req.body.password
-  knex('users')
-    .returning('id')
-    .insert({
-      name: name,
-      email: email,
-      password: password,
-      handle: handle
-    })
-    .then((results) => {
-      res.json(results);
-  });
-});
+
+  if (!email || !password) {
+    loginCredentials = false;
+    res.status(401).send('Please enter a valid email/password')
+    return
+  }
+
+  knex.select().table('users')
+  .then((result) => {
+    for (let user of result) {
+      if (email === user.email && password === user.password) {
+        // if (bcrypt.compareSync(password, user.password)) {
+
+        // }
+        loginCredentials = true
+        let user_email = email;
+        knex('users')
+        .returning('id')
+        .where('email', user_email)
+        .then((user) => {
+          //req.session.user_id = user[0].id
+          res.redirect('/')
+        })
+      }
+    }
+  })
+})
 
 // Register
 app.get("/register", (req, res) => {
@@ -114,17 +138,27 @@ app.post("/register", (req, res) => {
     }
   })
 
-  knex('users')
-    .returning('id')
-    .insert({
-      name: name,
-      email: email,
-      password: password,
-      handle: handle
-    })
-    .then((results) => {
-      res.json(results);
-  });
+  if (!invalidFormSubmit) {
+    knex('users')
+      .returning('id')
+      .insert({
+        name: name,
+        email: email,
+        password: bcrypt.hashSync(password, 10),
+        handle: handle
+      })
+      .then((user) => {
+        //res.json(results);
+        req.session.user_id = user[0];
+        res.redirect("/list")
+    });
+  }
+});
+
+// Logout
+app.get("/logout", (req, res) => {
+  req.session = null;
+  res.redirect('/');
 });
 
 app.listen(PORT, () => {
