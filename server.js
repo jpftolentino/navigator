@@ -107,7 +107,7 @@ app.post("/login", (req, res) => {
   })
 })
 
-// Register
+// Registers
 app.get("/register", (req, res) => {
   let user_id = { user_id: req.session.user_id };
   res.render("register", user_id);
@@ -168,23 +168,32 @@ app.get("/logout", (req, res) => {
 // User Profile Page
 app.get("/users", (req, res) => {
   let user_id = { user_id: req.session.user_id };
-  res.render("users", user_id);
+  if (!user_id['user_id']) {
+    res.redirect("/");
+  } else {
+    res.render("users", user_id);
   // knex('users')
   //   .select('*')
   //   .where('id', 1)
   //   .then((results) => {
   //     res.json(results);
   //   })
+  }
 });
 
 // Display Users Lists on User Page
 app.get("/users/myList", (req, res) => {
-  knex('list')
+  let user_id = { user_id: req.session.user_id };
+  if (!user_id['user_id']) {
+    res.redirect("/");
+  } else {
+    knex('list')
     .select('*')
     .where('fk_users_id', 2)
     .then((results) => {
       res.json(results);
     })
+  }
 })
 
 // Delete List
@@ -201,8 +210,11 @@ app.post("users/:id/delete", (req, res) => {
 // User Create List Page
 app.get("/newList", (req, res) => {
   let user_id = { user_id: req.session.user_id };
-  res.render("newList", user_id);
-
+  if (!user_id['user_id']) {
+    res.redirect("/");
+  } else {
+    res.render("newList", user_id);
+  }
 })
 
 // User Generates a list
@@ -222,7 +234,6 @@ app.post("/newList", (req, res) => {
     .then((result) => {
       res.redirect('/newList')
     })
-
 });
 // --><-- //
 
