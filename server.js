@@ -50,32 +50,9 @@ app.use("/api/users", usersRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   let user_id = req.session.user_id
-  if (user_id) {
-    res.redirect('/list')
-  } else {
-    res.redirect('/login')
-  }
+  res.render('index')
 });
 
-// List
-app.get("/list", (req, res) => {
-  let user_id = req.session.user_id
-  if (user_id) {
-    res.render('list')
-  } else {
-    res.redirect('/login')
-  }
-});
-
-// Main
-app.get("/main", (req, res) => {
-  let user_id = req.session.user_id
-  if (user_id) {
-    res.render('main')
-  } else {
-    res.redirect('/login')
-  }
-});
 
 // Login
 app.get("/login", (req, res) => {
