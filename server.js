@@ -71,43 +71,19 @@ app.get("/users", (req, res) => {
 
 // User Generates a list
 app.post("/users", (req, res) => {
-  let user = 2;
+  let user = 2
   let title = req.body.title
   let category = req.body.category
   let time = req.body.time
-  let taskOne = req.body.taskOne
-  let taskTwo = req.body.taskTwo
 
-  // knex('list')
-  //   .returning('list_id')
-  //   .insert({
-  //     fk_users_id: 1,
-  //     category:'Read',
-  //     title:'What to Cook',
-  //     time: 40
-  //   })
-  //   .then((results) => {
-  //       res.json(results);
-  //     });
-
-    knex('list')
-      .returning('list_id')
-      .insert({
-        fk_users_id: user,
-        title: title,
-        category: category,
-        time: time
-      }),
-
-    knex('task')
-      .returning('task_id')
-      .insert({
-        fk_list_id: 7,
-        description: taskOne
-      })
-      .then((results) => {
-        res.json(results);
-      });
+  knex('list')
+    .returning('list_id')
+    .insert({
+      fk_users_id: user,
+      title: title,
+      category: category,
+      time: time
+    }),
 
 });
 

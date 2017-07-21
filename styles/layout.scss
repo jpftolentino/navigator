@@ -6,6 +6,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    padding: 0 2em 0 0;
 
     img {
       height: 2.75em;
@@ -23,12 +24,25 @@ body {
       line-height: 1.5;
     }
 
-    button {
+    .register {
       float: right;
-      margin: 1em 2em;
+      margin: 1em 1em;
       border-radius: .25em;
-      background-color: white;
+      color: white;
+      border: solid .15em white;
+      padding: .2em;
     }
+
+    .login {
+      float: right;
+      margin: 1em 1em;
+      border-radius: .25em;
+      color: white;
+      border: solid .15em white;
+      padding: .2em;
+    }
+
+
 
   }
 
