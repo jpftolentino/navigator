@@ -81,19 +81,18 @@ app.post("/login", (req, res) => {
   knex.select().table('users')
   .then((result) => {
     for (let user of result) {
-      if (email === user.email && password === user.password) {
-        // if (bcrypt.compareSync(password, user.password)) {
-
-        // }
-        loginCredentials = true
-        let user_email = email;
-        knex('users')
-        .returning('id')
-        .where('email', user_email)
-        .then((user) => {
-          //req.session.user_id = user[0].id
-          res.redirect('/')
-        })
+      if (email === user.email) {
+        if (bcrypt.compareSync(password, user.password)) {
+          loginCredentials = true
+          let user_email = email;
+          knex('users')
+          .returning('id')
+          .where('email', user_email)
+          .then((user) => {
+            req.session.user_id = user[0].id
+            res.redirect('/list')
+          })
+        }
       }
     }
   })
