@@ -100,6 +100,10 @@ app.post("/login", (req, res) => {
         }
       }
     }
+    if (!loginCredentials) {
+      res.status(403).send('Please enter a valid email/password')
+      return;
+    }
   })
 })
 
