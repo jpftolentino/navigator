@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/styles/nav.css" type="nav/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
 
 
   </head>
@@ -19,18 +18,23 @@
   <body>
 
     <nav id='nav-bar'>
-      <a href='/main'>
+      <a href='/'>
       <img class='logo' src='/images/NavigatorLogo.png'>
       <span class='name'>Navigator</span>
     </a>
 
+    <% if (!user_id) { %>
       <a href='/register'>
         <span class='register'>Register</span>
       </a>
       <a href='/login'>
         <span class='login'>Login</span>
       </a>
-
+    <% } else { %>
+      <a href='/logout'>
+        <span class='logout'>Logout</span>
+      </a>
+    <% } %>
 
       <!-- Insert form for Login/Register or Profile Icon -->
 
