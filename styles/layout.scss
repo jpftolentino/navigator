@@ -82,18 +82,24 @@ body {
       clear: both;
     }
 
+    form {
+      margin: 0;
+    }
+
   }
 
   .form-box {
     border: solid .15em black;
-    margin: 10em;
+    margin: 10em auto;
     height: 20em;
+    width: 30em;
   }
 
   .create-list {
     border: solid .15em black;
-    margin: 10em;
+    margin: 10em auto;
     height: 20em;
+    width: 30em;
 
     input {
       width: 20em;
