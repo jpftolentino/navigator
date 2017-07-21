@@ -63,6 +63,7 @@ app.get("/list/:id", (req, res) => {
   res.render("list_show");
 });
 
+// --> Login & Registration Logic <-- //
 
 // Login
 app.get("/login", (req, res) => {
@@ -103,51 +104,6 @@ app.post("/login", (req, res) => {
 // Register
 app.get("/register", (req, res) => {
   res.render("register");
-});
-
-// User Profile Page
-app.get("/users", (req, res) => {
-  res.render("users");
-  knex('users')
-    .select('*')
-    .where('id', 1)
-    .then((results) => {
-      res.json(results);
-    })
-});
-
-// Display Users Lists on User Page
-app.get("/users/myList", (req, res) => {
-  knex('list')
-    .select('*')
-    .where('fk_users_id', 1)
-    .then((results) => {
-      res.json(results);
-    })
-})
-
-// User Create List Page
-app.get("/newList", (req, res) => {
-  res.render("newList");
-
-})
-
-// User Generates a list
-app.post("/newList", (req, res) => {
-  let user = 2
-  let title = req.body.title
-  let category = req.body.category
-  let time = req.body.time
-
-  knex('list')
-    .returning('list_id')
-    .insert({
-      fk_users_id: user,
-      title: title,
-      category: category,
-      time: time
-    })
-
 });
 
 app.post("/register", (req, res) => {
@@ -197,7 +153,59 @@ app.get("/logout", (req, res) => {
   res.redirect('/');
 });
 
+// --><-- //
+
+
+// --> Users Requests <-- //
+
+// User Profile Page
+app.get("/users", (req, res) => {
+  res.render("users");
+  // knex('users')
+  //   .select('*')
+  //   .where('id', 1)
+  //   .then((results) => {
+  //     res.json(results);
+  //   })
+});
+
+// Display Users Lists on User Page
+app.get("/users/myList", (req, res) => {
+  knex('list')
+    .select('*')
+    .where('fk_users_id', 1)
+    .then((results) => {
+      res.json(results);
+    })
+})
+
+// User Create List Page
+app.get("/newList", (req, res) => {
+  res.render("newList");
+
+})
+
+// User Generates a list
+app.post("/newList", (req, res) => {
+  let user = 1
+  let title = req.body.title
+  let category = req.body.category
+  let time = req.body.time
+
+  knex('list')
+    .insert({
+      fk_users_id: user,
+      title: title,
+      category: category,
+      time: time
+    })
+    .then((result) => {
+      res.redirect('/newList')
+    })
+
+});
+// --><-- //
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
-
