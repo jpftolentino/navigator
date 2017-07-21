@@ -19,12 +19,24 @@ $(() => {
     let newList = list[0].title;
     // $("<div>").text(newList).appendTo($("body"));
 
-    for(item in list){
-      if(list[item].title === newList){
-        // $("<div>").text(item.description).appendTo($("body"));
-        $("<div>").text(list[item].description).appendTo($("body"));
-      }
+    //iterate through lists
+    for(i in list){
+       $("<div>").text(i).appendTo($("body"));
+       newList = list[i].title;
     }
+
+    for(i in list){
+       $("<div>").text(i).appendTo($("body"));
+       newList = list[i].title;
+    }
+
+    //If title is the same as the current list tittle add tasks
+      for(item in list){
+        if(list[item].title === newList){
+          // $("<div>").text(item.description).appendTo($("body"));
+          $("<div>").text(list[item].description).appendTo($("body"));
+        }
+      }
 
     // $("<div>").text(list[0].description).appendTo($("body"));
     // $("<div>").text(list[1].description).appendTo($("body"));
