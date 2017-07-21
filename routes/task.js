@@ -8,7 +8,7 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     knex('list')
-      .select('list_id', 'title')
+      .join('task', 'task.fk_list_id','list.list_id')
       .then((results) => {
         res.json(results);
     });
