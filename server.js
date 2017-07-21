@@ -107,7 +107,7 @@ app.post("/login", (req, res) => {
   })
 })
 
-// Register
+// Registers
 app.get("/register", (req, res) => {
   let user_id = { user_id: req.session.user_id };
   res.render("register", user_id);
