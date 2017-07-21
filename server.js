@@ -181,9 +181,20 @@ app.get("/users", (req, res) => {
 app.get("/users/myList", (req, res) => {
   knex('list')
     .select('*')
-    .where('fk_users_id', 1)
+    .where('fk_users_id', 2)
     .then((results) => {
       res.json(results);
+    })
+})
+
+// Delete List
+app.post("users/:id/delete", (req, res) => {
+  const list = req.body.name
+  knex('list')
+    .where('list_id', list)
+    .del()
+    .then(() => {
+      res.redirect('/users')
     })
 })
 

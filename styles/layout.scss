@@ -70,7 +70,16 @@ body {
       padding: 1em;
       height: 10em;
       width: 17em;
+      margin: 2em;
+    }
 
+    a {
+      text-decoration: none;
+      color: black;
+      border: solid .15em black;
+      border-radius: .25em;
+      padding: .2em;
+      clear: both;
     }
 
   }
