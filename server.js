@@ -54,12 +54,13 @@ app.use("/api/task", taskRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+  let user_id = req.session.user_id;
   res.render('index')
-
 });
 
 // List
 app.get("/list/:id", (req, res) => {
+  let user_id = req.session.user_id;
   res.render("list_show");
 });
 
@@ -67,6 +68,7 @@ app.get("/list/:id", (req, res) => {
 
 // Login
 app.get("/login", (req, res) => {
+  let user_id = req.session.user_id;
   res.render("login");
 });
 
@@ -103,6 +105,7 @@ app.post("/login", (req, res) => {
 
 // Register
 app.get("/register", (req, res) => {
+  let user_id = req.session.user_id;
   res.render("register");
 });
 
