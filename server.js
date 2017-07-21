@@ -95,6 +95,8 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+// --> Users Requests <-- //
+
 // User Profile Page
 app.get("/users", (req, res) => {
   res.render("users");
@@ -121,6 +123,9 @@ app.get("/newList", (req, res) => {
   res.render("newList");
 
 })
+
+// --><-- //
+
 
 // User Generates a list
 app.post("/newList", (req, res) => {
