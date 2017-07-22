@@ -23,14 +23,14 @@ const usersRoutes = require("./routes/users");
 
 
 const getCurrentUser = (user_id) => {
-  knex('users')
+  return knex('users')
     .where('id', user_id)
-    .then((rows) => {
-      return rows;
+    .first()
+    .then((user) => {
+      return user.handle;
     })
-    .done((rows) => {
-      console.log(rows);
-    })
+
+
 }
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -70,9 +70,10 @@ app.use("/api/users", usersRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   let user_id = req.session.user_id;
-  // let currentUser = getCurrentUser(user_id);
-  let dataIntoForm = { user_id: user_id}
-  res.render('index', dataIntoForm);
+  getCurrentUser(user_id).then((currentUser) => {
+    let dataIntoForm = { user_id: user_id, currentUser: currentUser}
+    res.render('index', dataIntoForm);
+  })
 });
 
 // List
@@ -185,18 +186,12 @@ app.get("/logout", (req, res) => {
 // User Profile Page
 app.get("/users", (req, res) => {
   let user_id = { user_id: req.session.user_id };
-<<<<<<< HEAD
-=======
 
->>>>>>> 35ff7340a04841ea8892f094f91075ec555b949b
   if (!user_id['user_id']) {
     res.redirect("/");
   } else {
     res.render("users", user_id);
-<<<<<<< HEAD
-=======
 
->>>>>>> 35ff7340a04841ea8892f094f91075ec555b949b
   // knex('users')
   //   .select('*')
   //   .where('id', user_id)
@@ -244,10 +239,7 @@ app.get("/newList", (req, res) => {
 
 // User Generates a list
 app.post("/newList", (req, res) => {
-<<<<<<< HEAD
-=======
 
->>>>>>> 35ff7340a04841ea8892f094f91075ec555b949b
   // let user = 1
   // let title = req.body.title
   // let category = req.body.category
@@ -263,7 +255,6 @@ app.post("/newList", (req, res) => {
   //   .then((result) => {
   //     res.redirect('/newList')
   //   })
-<<<<<<< HEAD
   // res.render('newList');
 
   // let user = 1
@@ -281,7 +272,6 @@ app.post("/newList", (req, res) => {
   //   .then((result) => {
   //     res.redirect('/newList')
   //   })
-=======
   res.render('newList');
 
   let user = 1
@@ -299,7 +289,6 @@ app.post("/newList", (req, res) => {
     .then((result) => {
       res.redirect('/newList')
     })
->>>>>>> 35ff7340a04841ea8892f094f91075ec555b949b
 });
 
 // --><-- //
