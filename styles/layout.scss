@@ -80,6 +80,11 @@ body {
       margin: 2em auto;
     }
 
+    .add-list{
+      width: 4.4em;
+      margin: 0 auto;
+    }
+
     a {
       text-decoration: none;
       color: black;
@@ -87,6 +92,7 @@ body {
       border-radius: .25em;
       padding: .2em;
       width: 4em;
+
     }
 
     form {
@@ -117,6 +123,16 @@ body {
 
   form {
     margin: 5em;
+
+    input {
+      float: left;
+      margin: 2em;
+      background: none;
+      border: solid .15em black;
+      padding: 1em;
+      height: 10em;
+      width: 17em;
+    }
   }
 
 }
