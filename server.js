@@ -17,8 +17,21 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const listRoutes = require("./routes/list");
 const taskRoutes = require("./routes/task");
+const usersRoutes = require("./routes/users");
+
+
+const getCurrentUser = (user_id) => {
+  knex('users')
+    .where('id', user_id)
+    .then((rows) => {
+      return rows;
+    })
+    .done((rows) => {
+      console.log(rows);
+    })
+}
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -45,17 +58,21 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 
-// Mount all resource routes
 // Mounts list resource to url
-app.use("/api/users", usersRoutes(knex));
+app.use("/api/list", listRoutes(knex));
 
 // Mounts tasks resource to url
 app.use("/api/task", taskRoutes(knex));
 
+// Mounts users resource to url
+app.use("/api/users", usersRoutes(knex));
+
 // Home page
 app.get("/", (req, res) => {
-  let user_id = { user_id: req.session.user_id };
-  res.render('index', user_id)
+  let user_id = req.session.user_id;
+  let currentUser = getCurrentUser(user_id);
+  let dataIntoForm = { user_id: user_id, currentUser: currentUser }
+  res.render('index', dataIntoForm);
 });
 
 // List
@@ -169,9 +186,10 @@ app.get("/logout", (req, res) => {
 app.get("/users", (req, res) => {
   let user_id = { user_id: req.session.user_id };
   res.render("users", user_id);
+
   // knex('users')
   //   .select('*')
-  //   .where('id', 1)
+  //   .where('id', user_id)
   //   .then((results) => {
   //     res.json(results);
   //   })
@@ -196,21 +214,22 @@ app.get("/newList", (req, res) => {
 
 // User Generates a list
 app.post("/newList", (req, res) => {
-  let user = 1
-  let title = req.body.title
-  let category = req.body.category
-  let time = req.body.time
+  // let user = 1
+  // let title = req.body.title
+  // let category = req.body.category
+  // let time = req.body.time
 
-  knex('list')
-    .insert({
-      fk_users_id: user,
-      title: title,
-      category: category,
-      time: time
-    })
-    .then((result) => {
-      res.redirect('/newList')
-    })
+  // knex('list')
+  //   .insert({
+  //     fk_users_id: user,
+  //     title: title,
+  //     category: category,
+  //     time: time
+  //   })
+  //   .then((result) => {
+  //     res.redirect('/newList')
+  //   })
+  res.render('newList');
 
 });
 // --><-- //
