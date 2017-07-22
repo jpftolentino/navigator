@@ -1,36 +1,33 @@
 // $(() => {
+  // $('div .create-class').on('submit', (event) => {
+  // event.preventDefault();
+//     $.ajax({
+//       method: "POST",
+//       url: "/api/list"
+
+//     }).then((list_id) => {
 
 
-// $('.create-list').on('submit', function (event) {
-//   event.preventDefault();
 
-//       $.ajax({
-//         method: "POST",
-//         url: "/api/list"
-//       }).done((list) => {
-//         let user = req.session.user_id
-//         let title = req.body.title
-//         let category = req.body.category
-//         let time = req.body.time
+//           let user = req.session.user_id
+//           let title = req.body.title
+//           let category = req.body.category
+//           let time = req.body.time
 
-//         knex('list')
-//           .returning('list_id')
-//           .insert({
-//             fk_users_id: user,
-//             title: title,
-//             category: category,
-//             time: time
-//           })
-//           .then((list_id) => {
-
-//             // $('<p>').text('Hey it worked!').append($('body'));
-//             // console.log(id);
-//             // console.log(list_id);
-//             $('#create-list').remove();
-//             $('<p>').text(list_id).appendTo($('#create-task'));
-//           })
-//       })
+//           knex('list')
+//             .returning('list_id')
+//             .insert({
+//               fk_users_id: user,
+//               title: title,
+//               category: category,
+//               time: time
+//             })
+//         // $('<p>').text('Hey it worked!').append($('body'));
+//         // console.log(id);
+//         // console.log(list_id);
+//         $('form').remove();
+//         // res.redirect("/newList");
 //     })
-
+  // });
 // });
 
