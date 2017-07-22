@@ -1,7 +1,7 @@
 $(() => {
   $.ajax({
     method: "GET",
-    url: "/api/users"
+    url: "/api/list"
   }).done((list) => {
 
       //Creates a form for each list with a submit value for a get request to actual list
