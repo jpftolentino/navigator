@@ -2,7 +2,18 @@
 <html>
 
   <head></head>
-
+    <script>
+      var check = function() {
+      if (document.getElementById('password').value ==
+        document.getElementById('confirm_password').value) {
+        document.getElementById('message').style.color = 'green';
+        document.getElementById('message').innerHTML = 'matching';
+        } else {
+          document.getElementById('message').style.color = 'red';
+          document.getElementById('message').innerHTML = 'not matching';
+        }
+      }
+    </script>
   <body>
     <header><% include ./partials/header %></header>
 
@@ -18,9 +29,14 @@
         </div>
         <div>
           <label for='password'>Password</label>
-          <input type='password' id='password' name='password'>
+          <input type='password' id='password' name='password' onkeyup='check();'>
         </div>
-         <div>
+        <div>
+          <label for='confirm_password'>Confirm Password - </label>
+          <input type='password' id='confirm_password' name='confirm_password' onkeyup='check();'>
+          <span id='message'></span>
+        </div>
+        <div>
           <label for='handle'>Handle</label>
           <input type='text' id='handle' name='handle'>
         </div>

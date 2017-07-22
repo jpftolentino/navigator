@@ -134,7 +134,22 @@ app.post("/register", (req, res) => {
   let name = req.body.name
   let email = req.body.email
   let password = req.body.password
+  let passConfirmation = req.body.confirm_password
   let handle = req.body.handle
+
+  if (password != passConfirmation) {
+    invalidFormSubmit = true
+    res.status(401).send('Password does not match the confirm password.')
+    return
+  }
+
+  if (!handle.match(/^[a-zA-Z0-9]+$/)) {
+    invalidFormSubmit = true
+    res.status(401).send('Sorry but no special characters such as <>/%#&? are allowed for the username');
+    return
+  } else {
+    handle = "@" + req.body.handle
+  }
 
   if (!email || !password) {
     let invalidFormSubmit = true
