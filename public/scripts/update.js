@@ -20,10 +20,13 @@ $(document).ready(() => {
     console.log(currentList);
 
     let formBox = (".form-box");
-    let form = $("<form action='/list/update' method='/post'></form>");
-    let title = $("<label for='title'>Title</label>").append("<input type='text' id='title' name='title'>").attr('value', `${currentList[]}`);
+      let form = $("<form action='/list/update' method='/post'></form>");
+        let title = $("<label for='title'>Title</label>")
+        let titleInput = $("<input type='text' id='title' name='title'>").attr('value', currentList['title']);
+        let category = $("<label for='category'>Category</label>")
+        let categoryInput = $("<input type='text' id='category' name='title'>").attr('value', currentList['category'])
 
-    let fullForm = $(form).append(title);
+    let fullForm = $(form).append(title).append(titleInput).append(category).append(categoryInput);
 
     $(formBox).append(fullForm)
 
