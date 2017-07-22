@@ -270,26 +270,32 @@ app.get("/newList", (req, res) => {
 // User Generates a list and redirects user to a new page where they have to input task
 app.post("/newList", (req, res) => {
 
-  let user = req.session.user_id
-  let title = req.body.title
-  let category = req.body.category
-  let time = req.body.time
+  $('form').on('submit', (event) => {
 
-  knex('list')
-    .returning('list_id')
-    .insert({
-      fk_users_id: user,
-      title: title,
-      category: category,
-      time: time
-    })
-    .then((list_id) => {
+    event.preventDefault();
 
-      // $('<p>').text('Hey it worked!').append($('body'));
-      // console.log(id);
-      // console.log(list_id);
-      res.redirect("/newList/" + list_id);
-    })
+    let user = req.session.user_id
+    let title = req.body.title
+    let category = req.body.category
+    let time = req.body.time
+
+    knex('list')
+      .returning('list_id')
+      .insert({
+        fk_users_id: user,
+        title: title,
+        category: category,
+        time: time
+      })
+      .then((list_id) => {
+
+        // $('<p>').text('Hey it worked!').append($('body'));
+        // console.log(id);
+        // console.log(list_id);
+        $('form').remove();
+        // res.redirect("/newList");
+      })
+   })
 });
 
 app.get("/newList/:list_id" , (req,res) => {
