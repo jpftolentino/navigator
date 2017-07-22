@@ -22,16 +22,14 @@ const taskRoutes = require("./routes/task");
 const usersRoutes = require("./routes/users");
 
 
-const getCurrentUser = (user_id) => {
-  return knex('users')
-    .where('id', user_id)
-    .first()
-    .then((user) => {
-      return user.handle;
-    })
-
-
-}
+// const getCurrentUser = (user_id) => {
+//   return knex('users')
+//     .where('id', user_id)
+//     .first()
+//     .then((user) => {
+//       return user.handle;
+//     })
+// }
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -70,10 +68,10 @@ app.use("/api/users", usersRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   let user_id = req.session.user_id;
-  getCurrentUser(user_id).then((currentUser) => {
-    let dataIntoForm = { user_id: user_id, currentUser: currentUser}
+  // getCurrentUser(user_id).then((currentUser) => {
+    let dataIntoForm = { user_id: user_id}
     res.render('index', dataIntoForm);
-  })
+  // })
 });
 
 // List
@@ -192,15 +190,13 @@ app.get("/users", (req, res) => {
   } else {
     res.render("users", user_id);
 
-<<<<<<< HEAD
   // knex('users')
   //   .select('*')
   //   .where('id', user_id)
   //   .then((results) => {
   //     res.json(results);
   //   })
-=======
->>>>>>> 74503774cc1e3460eaed1ccbf0821c29429ecd00
+
   }
 });
 
@@ -255,45 +251,9 @@ app.get("/newList", (req, res) => {
 // User Generates a list
 app.post("/newList", (req, res) => {
 
-<<<<<<< HEAD
-  // let user = 1
-  // let title = req.body.title
-  // let category = req.body.category
-  // let time = req.body.time
-
-  // knex('list')
-  //   .insert({
-  //     fk_users_id: user,
-  //     title: title,
-  //     category: category,
-  //     time: time
-  //   })
-  //   .then((result) => {
-  //     res.redirect('/newList')
-  //   })
-  // res.render('newList');
-
-  // let user = 1
-  // let title = req.body.title
-  // let category = req.body.category
-  // let time = req.body.time
-
-  // knex('list')
-  //   .insert({
-  //     fk_users_id: user,
-  //     title: title,
-  //     category: category,
-  //     time: time
-  //   })
-  //   .then((result) => {
-  //     res.redirect('/newList')
-  //   })
   res.render('newList');
 
-  let user = 1
-=======
   let user = req.session.user_id
->>>>>>> 74503774cc1e3460eaed1ccbf0821c29429ecd00
   let title = req.body.title
   let category = req.body.category
   let time = req.body.time
@@ -308,10 +268,6 @@ app.post("/newList", (req, res) => {
     .then((result) => {
       res.redirect('/newList')
     })
-<<<<<<< HEAD
-=======
-
->>>>>>> 74503774cc1e3460eaed1ccbf0821c29429ecd00
 });
 
 // --><-- //
