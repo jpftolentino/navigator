@@ -185,15 +185,10 @@ app.get("/logout", (req, res) => {
 // User Profile Page
 app.get("/users", (req, res) => {
   let user_id = { user_id: req.session.user_id };
-<<<<<<< HEAD
-  res.render("users", user_id);
-
-=======
   if (!user_id['user_id']) {
     res.redirect("/");
   } else {
     res.render("users", user_id);
->>>>>>> dfacefee71e65b9b81d9a019f7a3370139bfae0f
   // knex('users')
   //   .select('*')
   //   .where('id', user_id)
@@ -230,7 +225,6 @@ app.get("/newList", (req, res) => {
 
 // User Generates a list
 app.post("/newList", (req, res) => {
-<<<<<<< HEAD
   // let user = 1
   // let title = req.body.title
   // let category = req.body.category
@@ -246,25 +240,23 @@ app.post("/newList", (req, res) => {
   //   .then((result) => {
   //     res.redirect('/newList')
   //   })
-  res.render('newList');
+  // res.render('newList');
 
-=======
-  let user = 1
-  let title = req.body.title
-  let category = req.body.category
-  let time = req.body.time
+  // let user = 1
+  // let title = req.body.title
+  // let category = req.body.category
+  // let time = req.body.time
 
-  knex('list')
-    .insert({
-      fk_users_id: user,
-      title: title,
-      category: category,
-      time: time
-    })
-    .then((result) => {
-      res.redirect('/newList')
-    })
->>>>>>> dfacefee71e65b9b81d9a019f7a3370139bfae0f
+  // knex('list')
+  //   .insert({
+  //     fk_users_id: user,
+  //     title: title,
+  //     category: category,
+  //     time: time
+  //   })
+  //   .then((result) => {
+  //     res.redirect('/newList')
+  //   })
 });
 // --><-- //
 
