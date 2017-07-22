@@ -70,8 +70,8 @@ app.use("/api/users", usersRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   let user_id = req.session.user_id;
-  let currentUser = getCurrentUser(user_id);
-  let dataIntoForm = { user_id: user_id, currentUser: currentUser }
+  // let currentUser = getCurrentUser(user_id);
+  let dataIntoForm = { user_id: user_id}
   res.render('index', dataIntoForm);
 });
 
@@ -185,15 +185,12 @@ app.get("/logout", (req, res) => {
 // User Profile Page
 app.get("/users", (req, res) => {
   let user_id = { user_id: req.session.user_id };
-<<<<<<< HEAD
-  res.render("users", user_id);
 
-=======
   if (!user_id['user_id']) {
     res.redirect("/");
   } else {
     res.render("users", user_id);
->>>>>>> dfacefee71e65b9b81d9a019f7a3370139bfae0f
+
   // knex('users')
   //   .select('*')
   //   .where('id', user_id)
@@ -241,7 +238,7 @@ app.get("/newList", (req, res) => {
 
 // User Generates a list
 app.post("/newList", (req, res) => {
-<<<<<<< HEAD
+
   // let user = 1
   // let title = req.body.title
   // let category = req.body.category
@@ -259,7 +256,6 @@ app.post("/newList", (req, res) => {
   //   })
   res.render('newList');
 
-=======
   let user = 1
   let title = req.body.title
   let category = req.body.category
@@ -275,8 +271,8 @@ app.post("/newList", (req, res) => {
     .then((result) => {
       res.redirect('/newList')
     })
->>>>>>> dfacefee71e65b9b81d9a019f7a3370139bfae0f
 });
+
 // --><-- //
 
 app.listen(PORT, () => {
