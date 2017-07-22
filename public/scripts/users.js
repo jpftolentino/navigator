@@ -4,6 +4,19 @@ $(document).ready((list) => {
   $(() => {
     $.ajax({
       method: "GET",
+      url: "/users/username"
+    }).done((user) => {
+
+      for (column of user) {
+        $("<span>").text(user[column]).appendTo('.user-box')
+      }
+
+    })
+  })
+
+  $(() => {
+    $.ajax({
+      method: "GET",
       url: "/users/myList"
     }).done((list) => {
 

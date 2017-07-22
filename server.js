@@ -191,14 +191,20 @@ app.get("/users", (req, res) => {
   } else {
     res.render("users", user_id);
 
-  // knex('users')
-  //   .select('*')
-  //   .where('id', user_id)
-  //   .then((results) => {
-  //     res.json(results);
-  //   })
   }
 });
+
+// To get Username Displaying on User Profile
+app.get("/users/username", (req, res) => {
+
+  knex('users')
+  .select('*')
+  .where('id', req.session.user_id)
+  .then((results) => {
+    res.json(results);
+  })
+
+})
 
 // Display Users Lists on User Page
 app.get("/users/myList", (req, res) => {
@@ -208,7 +214,7 @@ app.get("/users/myList", (req, res) => {
   } else {
     knex('list')
     .select('*')
-    .where('fk_users_id', 1)
+    .where('fk_users_id', req.session.user_id)
     .then((results) => {
       res.json(results);
     })
@@ -239,24 +245,7 @@ app.get("/newList", (req, res) => {
 // User Generates a list
 app.post("/newList", (req, res) => {
 
-  // let user = 1
-  // let title = req.body.title
-  // let category = req.body.category
-  // let time = req.body.time
-
-  // knex('list')
-  //   .insert({
-  //     fk_users_id: user,
-  //     title: title,
-  //     category: category,
-  //     time: time
-  //   })
-  //   .then((result) => {
-  //     res.redirect('/newList')
-  //   })
-  res.render('newList');
-
-  let user = 1
+  let user = req.session.user_id
   let title = req.body.title
   let category = req.body.category
   let time = req.body.time
