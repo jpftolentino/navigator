@@ -191,8 +191,57 @@ app.get("/logout", (req, res) => {
   res.redirect('/');
 });
 
-// --><-- //
+// User update email and password
+// Helper function for email update
+function emailUpdater(user_id, newEmail) {
+  return knex('users')
+  .returning('user')
+  .where({ id: user_id })
+  .first()
+  .then((user) => {
+      return knex('users')
+      .where({ id: user_id })
+      .update({ email: newEmail })
+  });
+};
 
+// Helper function for password update
+function passwordUpdater(user_id, newPassword) {
+  return knex('users')
+  .returning('user')
+  .where({ id: user_id })
+  .first()
+  .then((user) => {
+      return knex('users')
+      .where({ id: user_id })
+      .update({ password: bcrypt.hashSync(newPassword, 10) })
+  });
+};
+
+// Handles post requests for updates
+app.post("/updateinfo", (req, res) => {
+  let user_id = req.session.user_id;
+  let newEmail = req.body.email;
+  let newPassword = req.body.password;
+
+  let emailPromise = Promise.resolve();
+  let passwordPromise = Promise.resolve();
+  if (newEmail) {
+    emailPromise = emailUpdater(user_id, newEmail);
+  }
+
+  if (newPassword) {
+    passwordPromise = passwordUpdater(user_id, newPassword)
+  }
+
+  Promise.all([emailPromise, passwordPromise])
+  .then(() => {
+    res.redirect('/users');
+  });
+
+});
+
+// --><-- //
 
 // --> Users Requests <-- //
 
@@ -253,8 +302,6 @@ app.get("/list/:id/update", (req, res) => {
 
   res.render("update", user_id);
 })
-
-
 
 
 // User Create List Page
