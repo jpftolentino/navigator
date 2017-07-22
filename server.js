@@ -255,12 +255,22 @@ app.get("/list/:id/update", (req, res) => {
 })
 
 // Update List Handler
-app.put("/list/:id/update", (req, res) => {
+app.post("/list/:id/update", (req, res) => {
   let list = req.params.id
   let title = req.body.title
   let category = req.body.category
-  let
+  let time = req.body.time
 
+  knex('list')
+    .where('list_id', list)
+    .update({
+      title: title,
+      category: category,
+      time: time
+    })
+    .then(() => {
+      res.redirect('/users')
+    })
 
 })
 
