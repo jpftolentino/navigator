@@ -191,8 +191,57 @@ app.get("/logout", (req, res) => {
   res.redirect('/');
 });
 
-// --><-- //
+// User update email and password
+// Helper function for email update
+function emailUpdater(user_id, newEmail) {
+  return knex('users')
+  .returning('user')
+  .where({ id: user_id })
+  .first()
+  .then((user) => {
+      return knex('users')
+      .where({ id: user_id })
+      .update({ email: newEmail })
+  });
+};
 
+// Helper function for password update
+function passwordUpdater(user_id, newPassword) {
+  return knex('users')
+  .returning('user')
+  .where({ id: user_id })
+  .first()
+  .then((user) => {
+      return knex('users')
+      .where({ id: user_id })
+      .update({ password: bcrypt.hashSync(newPassword, 10) })
+  });
+};
+
+// Handles post requests for updates
+app.post("/updateinfo", (req, res) => {
+  let user_id = req.session.user_id;
+  let newEmail = req.body.email;
+  let newPassword = req.body.password;
+
+  let emailPromise = Promise.resolve();
+  let passwordPromise = Promise.resolve();
+  if (newEmail) {
+    emailPromise = emailUpdater(user_id, newEmail);
+  }
+
+  if (newPassword) {
+    passwordPromise = passwordUpdater(user_id, newPassword)
+  }
+
+  Promise.all([emailPromise, passwordPromise])
+  .then(() => {
+    res.redirect('/users');
+  });
+
+});
+
+// --><-- //
 
 // --> Users Requests <-- //
 
@@ -261,6 +310,7 @@ app.post("/list/:id/update", (req, res) => {
   let category = req.body.category
   let time = req.body.time
 
+<<<<<<< HEAD
   knex('list')
     .where('list_id', list)
     .update({
@@ -275,6 +325,8 @@ app.post("/list/:id/update", (req, res) => {
 })
 
 
+=======
+>>>>>>> 9543bfe6ba46af18ed7e438f5e7bac8eb50cd07b
 // User Create List Page
 app.get("/newList", (req, res) => {
   let user_id = { user_id: req.session.user_id };
@@ -288,26 +340,32 @@ app.get("/newList", (req, res) => {
 // User Generates a list and redirects user to a new page where they have to input task
 app.post("/newList", (req, res) => {
 
-  let user = req.session.user_id
-  let title = req.body.title
-  let category = req.body.category
-  let time = req.body.time
+  $('form').on('submit', (event) => {
 
-  knex('list')
-    .returning('list_id')
-    .insert({
-      fk_users_id: user,
-      title: title,
-      category: category,
-      time: time
-    })
-    .then((list_id) => {
+    event.preventDefault();
 
-      // $('<p>').text('Hey it worked!').append($('body'));
-      // console.log(id);
-      // console.log(list_id);
-      res.redirect("/newList/" + list_id);
-    })
+    let user = req.session.user_id
+    let title = req.body.title
+    let category = req.body.category
+    let time = req.body.time
+
+    knex('list')
+      .returning('list_id')
+      .insert({
+        fk_users_id: user,
+        title: title,
+        category: category,
+        time: time
+      })
+      .then((list_id) => {
+
+        // $('<p>').text('Hey it worked!').append($('body'));
+        // console.log(id);
+        // console.log(list_id);
+        $('form').remove();
+        // res.redirect("/newList");
+      })
+   })
 });
 
 app.get("/newList/:list_id" , (req,res) => {
