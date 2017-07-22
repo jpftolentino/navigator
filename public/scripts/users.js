@@ -7,21 +7,21 @@ $(document).ready((list) => {
       url: "/users/myList"
     }).done((list) => {
 
-    for (item in list) {
-      $("<div class='item-box'>").text(list[item].title).appendTo('.user-box')
-      $("<button class='delete'>").text('delete').appendTo('.user-box')
-    }
 
-    // <form method="POST" action="/urls//delete"><input type="submit" value="Delete"></form>
+      for (item in list) {
+        $("<div class='item-box'>").text(list[item].title).appendTo('.user-box')
 
-    $("<button class='update'>").text('update').appendTo('.item-box')
-    // $("<button class='delete'>").text('delete').appendTo('.item-box')
+        $("<form method='POST'>")
+          .attr('action', `users/${list[item].list_id}/update`)
+          .append("<button type='submit'>Update</button>")
+          .appendTo('.user-box')
+
+        $("<form method='POST'>")
+          .attr('action', `users/${list[item].list_id}/delete`)
+          .append("<button type='submit'>Delete</button>")
+          .appendTo('.user-box')
+      }
 
     })
   })
-
-  $(".delete").on('click', () => {
-
-  })
-
 })
