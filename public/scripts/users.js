@@ -4,6 +4,20 @@ $(document).ready((list) => {
   $(() => {
     $.ajax({
       method: "GET",
+      url: "/users/username"
+    }).done((user) => {
+
+        for (item in user) {
+          $("<div id='username'>").text(user[item].name).prependTo('.user-box')
+          console.log(user[item].name);
+        }
+
+    })
+  })
+
+  $(() => {
+    $.ajax({
+      method: "GET",
       url: "/users/myList"
     }).done((list) => {
 

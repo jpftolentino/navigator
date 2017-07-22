@@ -63,14 +63,26 @@ body {
   }
 
   .user-box {
-    margin: 10em;
+
+    margin: 5em 10em;
+
+    #username {
+      font-size: 5em;
+      margin: .5em auto;
+      width: 1.8em;
+    }
 
     .item-box {
       border: solid .15em black;
       padding: 1em;
       height: 10em;
       width: 17em;
-      margin: 2em;
+      margin: 2em auto;
+    }
+
+    .add-list{
+      width: 4.4em;
+      margin: 0 auto;
     }
 
     a {
@@ -79,11 +91,13 @@ body {
       border: solid .15em black;
       border-radius: .25em;
       padding: .2em;
-      clear: both;
+      width: 4em;
+
     }
 
     form {
-      margin: 0;
+      margin: 0 auto;
+      width: 4em;
     }
 
   }
@@ -109,6 +123,16 @@ body {
 
   form {
     margin: 5em;
+
+    input {
+      float: left;
+      margin: 2em;
+      background: none;
+      border: solid .15em black;
+      padding: 1em;
+      height: 10em;
+      width: 17em;
+    }
   }
 
 }

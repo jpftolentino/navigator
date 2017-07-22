@@ -192,14 +192,29 @@ app.get("/users", (req, res) => {
   } else {
     res.render("users", user_id);
 
+<<<<<<< HEAD
   // knex('users')
   //   .select('*')
   //   .where('id', user_id)
   //   .then((results) => {
   //     res.json(results);
   //   })
+=======
+>>>>>>> 74503774cc1e3460eaed1ccbf0821c29429ecd00
   }
 });
+
+// To get Username Displaying on User Profile
+app.get("/users/username", (req, res) => {
+
+  knex('users')
+  .select('*')
+  .where('id', req.session.user_id)
+  .then((results) => {
+    res.json(results);
+  })
+
+})
 
 // Display Users Lists on User Page
 app.get("/users/myList", (req, res) => {
@@ -209,7 +224,7 @@ app.get("/users/myList", (req, res) => {
   } else {
     knex('list')
     .select('*')
-    .where('fk_users_id', 1)
+    .where('fk_users_id', req.session.user_id)
     .then((results) => {
       res.json(results);
     })
@@ -240,6 +255,7 @@ app.get("/newList", (req, res) => {
 // User Generates a list
 app.post("/newList", (req, res) => {
 
+<<<<<<< HEAD
   // let user = 1
   // let title = req.body.title
   // let category = req.body.category
@@ -275,6 +291,9 @@ app.post("/newList", (req, res) => {
   res.render('newList');
 
   let user = 1
+=======
+  let user = req.session.user_id
+>>>>>>> 74503774cc1e3460eaed1ccbf0821c29429ecd00
   let title = req.body.title
   let category = req.body.category
   let time = req.body.time
@@ -289,6 +308,10 @@ app.post("/newList", (req, res) => {
     .then((result) => {
       res.redirect('/newList')
     })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74503774cc1e3460eaed1ccbf0821c29429ecd00
 });
 
 // --><-- //
