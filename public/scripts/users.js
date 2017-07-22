@@ -7,9 +7,10 @@ $(document).ready((list) => {
       url: "/users/username"
     }).done((user) => {
 
-      for (column of user) {
-        $("<span>").text(user[column]).appendTo('.user-box')
-      }
+        for (item in user) {
+          $("<div id='username'>").text(user[item].name).prependTo('.user-box')
+          console.log(user[item].name);
+        }
 
     })
   })

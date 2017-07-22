@@ -245,13 +245,7 @@ app.get("/newList", (req, res) => {
 // User Generates a list
 app.post("/newList", (req, res) => {
 
-<<<<<<< HEAD
-  res.render('newList');
-
-  let user = 1
-=======
   let user = req.session.user_id
->>>>>>> feature/delete
   let title = req.body.title
   let category = req.body.category
   let time = req.body.time
