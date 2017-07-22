@@ -18,7 +18,7 @@ $(document).ready(() => {
     }
 
     let formBox = (".form-box");
-      let form = $("<form method='POST'></form>").attr('action', `/list/${id}/update`);
+      let form = $("<form method='POST' class='form'></form>").attr('action', `/list/${id}/update`);
         let title = $("<label for='title'>Title</label>");
         let titleInput = $("<input type='text' id='title' name='title'>").attr('value', currentList['title']);
         let category = $("<label for='category'>Category</label>");
@@ -41,9 +41,17 @@ $(document).ready(() => {
         url: `/list/${id}/tasks`
       }).done((tasks) => {
 
-      for (item of tasks) {
-        console.log(item);
+      let formBox = (".form-box");
 
+      for (item of tasks) {
+        console.log(item['task_id']);
+        let form = $("<form method='POST'></form>").attr('action', `/list/${item['task_id']}/update`);
+          let description = $("<label for='description'>Description</label>");
+          let descriptionInput = $("<input type='text' id='description' name='description'>").attr('value', item['description']);
+
+        let fullForm = $(form).append(description).append(descriptionInput);
+
+        $('.form-box').append(fullForm)
       }
 
 
