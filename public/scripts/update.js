@@ -17,8 +17,6 @@ $(document).ready(() => {
       }
     }
 
-    console.log(currentList);
-
     let formBox = (".form-box");
       let form = $("<form method='POST'></form>").attr('action', `/list/${id}/update`);
         let title = $("<label for='title'>Title</label>");
@@ -37,8 +35,27 @@ $(document).ready(() => {
 
     $(formBox).append(fullForm)
 
+    $(() => {
+      $.ajax({
+        method: "GET",
+        url: `/list/${id}/tasks`
+      }).done((tasks) => {
+
+      for (item of tasks) {
+        console.log(item);
+
+      }
+
+
+      })
+    })
+
 
     })
   })
+
+
+
+
 
 })

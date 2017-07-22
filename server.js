@@ -273,7 +273,18 @@ app.post("/list/:id/update", (req, res) => {
     })
 })
 
-app.get("/list/tasks", )
+// Update tasks ajax request
+app.get("/list/:id/tasks", (req, res) => {
+  let id = req.session.user_id
+  let list = req.params.id
+
+  knex('task')
+    .where('fk_list_id', list)
+    .then((results) => {
+      res.json(results);
+    })
+
+})
 
 
 // User Create List Page
