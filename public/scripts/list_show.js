@@ -28,8 +28,6 @@ $(() => {
           $('<li>').text(description).appendTo($('ul'));
         }
       }
-
-
-  });;
+  })
 });
 
