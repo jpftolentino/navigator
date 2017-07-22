@@ -310,7 +310,6 @@ app.post("/list/:id/update", (req, res) => {
   let category = req.body.category
   let time = req.body.time
 
-<<<<<<< HEAD
   knex('list')
     .where('list_id', list)
     .update({
@@ -325,8 +324,7 @@ app.post("/list/:id/update", (req, res) => {
 })
 
 
-=======
->>>>>>> 9543bfe6ba46af18ed7e438f5e7bac8eb50cd07b
+
 // User Create List Page
 app.get("/newList", (req, res) => {
   let user_id = { user_id: req.session.user_id };
@@ -341,35 +339,28 @@ app.get("/newList", (req, res) => {
 
 app.post("/newList", (req, res) => {
 
+    let user = req.session.user_id
+    let title = req.body.title
+    let category = req.body.category
+    let time = req.body.time
 
-  $('form').on('submit', (event) => {
+    knex('list')
+      .returning('list_id')
+      .insert({
+        fk_users_id: user,
+        title: title,
+        category: category,
+        time: time
+      })
+      .then((list_id) => {
 
-    event.preventDefault();
+        // $('<p>').text('Hey it worked!').append($('body'));
+        // console.log(id);
+        // console.log($('form'));
+        // $('form').remove();
+        // res.redirect("/newList");
+      })
 
-    // let user = req.session.user_id
-    // let title = req.body.title
-    // let category = req.body.category
-    // let time = req.body.time
-
-    // knex('list')
-    //   .returning('list_id')
-    //   .insert({
-    //     fk_users_id: user,
-    //     title: title,
-    //     category: category,
-    //     time: time
-    //   })
-    //   .then((list_id) => {
-
-    //     // $('<p>').text('Hey it worked!').append($('body'));
-    //     // console.log(id);
-    //     // console.log($('form'));
-    //     $('form').remove();
-    //     // res.redirect("/newList");
-    //   })
-
-
-   })
 });
 
 app.get("/newList/:list_id" , (req,res) => {
