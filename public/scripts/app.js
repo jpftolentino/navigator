@@ -11,7 +11,7 @@ $(() => {
           let $form = $("<form>", {
             action: '/list/' + list_id,
             method: 'GET',
-          }).appendTo($('body'));
+          }).addClass('list').appendTo($('body'));
           $form.append('<input type="submit" value="' + title + '">');
       }
 
