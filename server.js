@@ -303,7 +303,30 @@ app.get("/list/:id/update", (req, res) => {
   res.render("update", user_id);
 })
 
+// Update List Handler
+app.post("/list/:id/update", (req, res) => {
+  let list = req.params.id
+  let title = req.body.title
+  let category = req.body.category
+  let time = req.body.time
 
+<<<<<<< HEAD
+  knex('list')
+    .where('list_id', list)
+    .update({
+      title: title,
+      category: category,
+      time: time
+    })
+    .then(() => {
+      res.redirect('/users')
+    })
+
+})
+
+
+=======
+>>>>>>> 9543bfe6ba46af18ed7e438f5e7bac8eb50cd07b
 // User Create List Page
 app.get("/newList", (req, res) => {
   let user_id = { user_id: req.session.user_id };
