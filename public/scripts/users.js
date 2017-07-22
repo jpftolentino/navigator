@@ -1,5 +1,5 @@
 
-$(document).ready((list) => {
+$(document).ready(() => {
 
   $(() => {
     $.ajax({
@@ -25,8 +25,8 @@ $(document).ready((list) => {
       for (item in list) {
         $("<div class='item-box'>").text(list[item].title).appendTo('.user-box')
 
-        $("<form method='POST'>")
-          .attr('action', `users/${list[item].list_id}/update`)
+        $("<form method='GET'>")
+          .attr('action', `list/${list[item].list_id}/update`)
           .append("<button type='submit'>Update</button>")
           .appendTo('.user-box')
 

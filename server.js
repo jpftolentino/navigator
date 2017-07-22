@@ -189,18 +189,11 @@ app.get("/users", (req, res) => {
     res.redirect("/");
   } else {
     res.render("users", user_id);
-
-  // knex('users')
-  //   .select('*')
-  //   .where('id', user_id)
-  //   .then((results) => {
-  //     res.json(results);
-  //   })
-
   }
 });
 
-// To get Username Displaying on User Profile
+// Username Display on User Page
+// (Sends all user data to user page)
 app.get("/users/username", (req, res) => {
 
   knex('users')
@@ -229,7 +222,7 @@ app.get("/users/myList", (req, res) => {
 
 // Delete List
 app.post("/users/:id/delete", (req, res) => {
-  const list = req.params.id
+  let list = req.params.id
   knex('list')
     .where('list_id', list)
     .del()
@@ -237,6 +230,17 @@ app.post("/users/:id/delete", (req, res) => {
       res.redirect('/users')
     })
 })
+
+// Update List Page
+app.get("/list/:id/update", (req, res) => {
+  let user_id = { user_id: req.session.user_id };
+  let list = req.params.id
+
+  res.render("update", user_id);
+})
+
+
+
 
 // User Create List Page
 app.get("/newList", (req, res) => {
