@@ -185,35 +185,52 @@ app.get("/logout", (req, res) => {
 // User Profile Page
 app.get("/users", (req, res) => {
   let user_id = { user_id: req.session.user_id };
+<<<<<<< HEAD
   res.render("users", user_id);
 
+=======
+  if (!user_id['user_id']) {
+    res.redirect("/");
+  } else {
+    res.render("users", user_id);
+>>>>>>> dfacefee71e65b9b81d9a019f7a3370139bfae0f
   // knex('users')
   //   .select('*')
   //   .where('id', user_id)
   //   .then((results) => {
   //     res.json(results);
   //   })
+  }
 });
 
 // Display Users Lists on User Page
 app.get("/users/myList", (req, res) => {
-  knex('list')
+  let user_id = { user_id: req.session.user_id };
+  if (!user_id['user_id']) {
+    res.redirect("/");
+  } else {
+    knex('list')
     .select('*')
     .where('fk_users_id', 1)
     .then((results) => {
       res.json(results);
     })
+  }
 })
 
 // User Create List Page
 app.get("/newList", (req, res) => {
   let user_id = { user_id: req.session.user_id };
-  res.render("newList", user_id);
-
+  if (!user_id['user_id']) {
+    res.redirect("/");
+  } else {
+    res.render("newList", user_id);
+  }
 })
 
 // User Generates a list
 app.post("/newList", (req, res) => {
+<<<<<<< HEAD
   // let user = 1
   // let title = req.body.title
   // let category = req.body.category
@@ -231,6 +248,23 @@ app.post("/newList", (req, res) => {
   //   })
   res.render('newList');
 
+=======
+  let user = 1
+  let title = req.body.title
+  let category = req.body.category
+  let time = req.body.time
+
+  knex('list')
+    .insert({
+      fk_users_id: user,
+      title: title,
+      category: category,
+      time: time
+    })
+    .then((result) => {
+      res.redirect('/newList')
+    })
+>>>>>>> dfacefee71e65b9b81d9a019f7a3370139bfae0f
 });
 // --><-- //
 
