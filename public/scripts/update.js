@@ -20,13 +20,20 @@ $(document).ready(() => {
     console.log(currentList);
 
     let formBox = (".form-box");
-      let form = $("<form action='/list/update' method='/post'></form>");
-        let title = $("<label for='title'>Title</label>")
+      let form = $("<form method='PUT'></form>").attr('action', `/list/${id}/update`);
+        let title = $("<label for='title'>Title</label>");
         let titleInput = $("<input type='text' id='title' name='title'>").attr('value', currentList['title']);
-        let category = $("<label for='category'>Category</label>")
-        let categoryInput = $("<input type='text' id='category' name='title'>").attr('value', currentList['category'])
+        let category = $("<label for='category'>Category</label>");
+        let categoryInput = $("<input type='text' id='category' name='title'>").attr('value', currentList['category']);
+        let time = $("<label for='time'>Time</label>");
+        let timeInput = $("<input type='integer' id='time' name='time'>").attr('value', currentList['time'])
+        let submit = $("<button type='submit'>Submit</button>")
 
-    let fullForm = $(form).append(title).append(titleInput).append(category).append(categoryInput);
+    let fullForm = $(form)
+      .append(title).append(titleInput)
+      .append(category).append(categoryInput)
+      .append(time).append(timeInput)
+      .append(submit)
 
     $(formBox).append(fullForm)
 

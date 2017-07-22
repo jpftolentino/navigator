@@ -254,7 +254,15 @@ app.get("/list/:id/update", (req, res) => {
   res.render("update", user_id);
 })
 
+// Update List Handler
+app.put("/list/:id/update", (req, res) => {
+  let list = req.params.id
+  let title = req.body.title
+  let category = req.body.category
+  let
 
+
+})
 
 
 // User Create List Page
