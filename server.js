@@ -339,11 +339,13 @@ app.post("/task/:id/:num/update", (req, res) => {
   let list = req.params.num
   let tasks = req.params.id
   let description = req.body.description
+  let url = req.body.url
 
   knex('task')
     .where('task_id', tasks)
     .update({
-      description: description
+      description: description,
+      url: url
     })
     .then(() => {
       res.redirect(`/list/${list}/update`);
@@ -354,11 +356,13 @@ app.post("/task/:id/:num/update", (req, res) => {
 app.post("/task/:id/add", (req, res) => {
   let list = req.params.id
   let description = req.body.description
+  let url = req.body.url
 
   knex('task')
     .insert({
       fk_list_id: list,
-      description: description
+      description: description,
+      url: url
     })
     .then((list_id) => {
       res.redirect(`/list/${list}/update`)
