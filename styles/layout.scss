@@ -7,26 +7,31 @@ body {
     top: 0;
     width: 100%;
     padding: 0 2em 0 0;
+    border-bottom: solid .15em grey;
 
     img {
       height: 2.75em;
       width: 2.75em;
-      margin: .5em .15em .25em 1.5em;
+      margin: .6em .15em .25em 1.5em;
       float: left;
     }
 
     .name {
       color: white;
       float: left;
-      margin: .25em .25em;
+      margin: .35em .25em;
       height: 100%;
       font-size: 1.75em;
       line-height: 1.5;
     }
 
+    .name:hover {
+      background-color: #639eff;
+    }
+
     .register {
       float: right;
-      margin: 1em 1em;
+      margin: 1em .5em;
       border-radius: .25em;
       color: white;
       border: solid .15em white;
@@ -35,7 +40,7 @@ body {
 
     .login {
       float: right;
-      margin: 1em 1em;
+      margin: 1em .5em;
       border-radius: .25em;
       color: white;
       border: solid .15em white;
@@ -44,7 +49,7 @@ body {
 
     .profile {
       float: right;
-      margin: 1em 1em;
+      margin: 1em .5em;
       border-radius: .25em;
       color: white;
       border: solid .15em white;
@@ -53,11 +58,15 @@ body {
 
     .logout {
       float: right;
-      margin: 1em 1em;
+      margin: 1em .5em;
       border-radius: .25em;
       color: white;
       border: solid .15em white;
       padding: .2em;
+    }
+
+    span:hover {
+      background-color: #4288f7;
     }
 
   }
@@ -73,11 +82,17 @@ body {
     }
 
     .item-box {
-      border: solid .15em black;
+      border: solid .15em #afcbff;
+      border-radius: .5em;
       padding: 1em;
       height: 10em;
       width: 17em;
       margin: 2em auto;
+      background-color: #e8f0ff;
+    }
+
+    .item-box:hover {
+      border: solid .2em grey;
     }
 
     .add-list{
@@ -133,10 +148,16 @@ body {
       float: left;
       margin: 2em;
       background: none;
-      border: solid .15em black;
+      border: solid .15em #afcbff;
+      border-radius: .5em;
       padding: 1em;
       height: 10em;
       width: 17em;
+      background-color: #e8f0ff;
+    }
+
+    input:hover {
+      border: solid .2em grey;
     }
   }
 
