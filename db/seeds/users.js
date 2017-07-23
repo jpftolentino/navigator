@@ -57,7 +57,7 @@ exports.seed = function(knex, Promise) {
           .insert({
             fk_users_id: 1,
             category: 'Read',
-            title:'How to get a girl in 4 hours',
+            title:'How to get a girlfriend in 4 hours',
             time:240
           }),
 
@@ -68,7 +68,7 @@ exports.seed = function(knex, Promise) {
           .insert({
             fk_list_id: 1,
             description: 'Do 10 pushups',
-            url: 'http://google.ca'
+            url: 'www.google.ca'
           }),
 
         knex('task')
@@ -76,7 +76,7 @@ exports.seed = function(knex, Promise) {
           .insert({
             fk_list_id: 1,
             description: 'Do 10 jumping jacks',
-            url: 'http://google.ca'
+            url: 'www.google.ca'
           }),
 
         knex('task')
@@ -84,7 +84,7 @@ exports.seed = function(knex, Promise) {
           .insert({
             fk_list_id: 2,
             description: 'Juon 2',
-            url: 'http://google.ca'
+            url: 'www.google.ca'
           }),
 
         knex('task')
@@ -92,7 +92,7 @@ exports.seed = function(knex, Promise) {
           .insert({
             fk_list_id: 2,
             description: 'Paranormal Activity',
-            url: 'http://google.ca'
+            url: 'www.google.ca'
           }),
 
         knex('task')
@@ -100,7 +100,7 @@ exports.seed = function(knex, Promise) {
           .insert({
             fk_list_id: 3,
             description: 'Read the Game',
-            url: 'http://google.ca'
+            url: 'www.google.ca'
           }),
 
         knex('task')
@@ -108,7 +108,7 @@ exports.seed = function(knex, Promise) {
           .insert({
             fk_list_id: 3,
             description: 'Go to a bar',
-            url: 'http://google.ca'
+            url: 'www.google.ca'
           }),
       ]);
     });
