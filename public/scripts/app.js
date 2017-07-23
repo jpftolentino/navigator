@@ -11,19 +11,19 @@ $(() => {
           let category = list[item].category;
           let time = list[item].time;
 
-          let $container = $('<div>');
-          let $category = $(`<span>Category: ${category}</span>`);
-          let $time = $(`<span>Time: ${time}</span>`);
+          // let $container = $('<div class="list"></div>');
+          // let $title = $('<span>' + title + '</span>')
+          // let $category = $(`<span>Category: ${category}</span>`);
+          // let $time = $(`<span>Time: ${time}</span>`);
 
-          $container.appendTo($('body'));
+          // $container.appendTo($('body'));
           let $form = $("<form>", {
             action: '/list/' + list_id,
             method: 'GET',
-          }).addClass('list').appendTo($($container));
+          }).addClass('list').appendTo($('body'));
           $form.append('<input type="submit" value="' + title + '">');
-          ($('input')).append($category);
-          $container.append($time);
-
+          // $container.append($category);
+          // $container.append($time);
       }
 
 
