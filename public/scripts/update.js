@@ -44,12 +44,19 @@ $(document).ready(() => {
       let listNumber = 1;
 
       for (item of tasks) {
+        console.log(item);
         let form = $("<form method='POST'></form>").attr('action', `/task/${item['task_id']}/${id}/update`);
           let description = $("<label for='description'>To-Do</label>");
           let descriptionInput = $("<input type='text' id='description' name='description'>").attr('value', item['description']);
+          let url = $("<label for='url'>URL</label>")
+          let urlInput = $("<input type='text' id='url' name='url'>").attr('value', item['url']);
           let submit = $("<button type='submit'>Update</button>");
 
-        let fullForm = $(form).append(description).append(descriptionInput).append(submit);
+        let fullForm = $(form)
+          .append(description).append(descriptionInput)
+          .append(url).append(urlInput)
+          .append(submit);
+
         $('.form-box').append(fullForm)
 
         $("<form method='POST'>")
@@ -66,11 +73,21 @@ $(document).ready(() => {
         let form = $("<form method='POST'></form>").attr('action', `/task/${id}/add`).attr('id', `${listNumber+1}`);
           let description = $("<label for='description'>To-Do</label>");
           let descriptionInput = $("<input type='text' id='description' name='description'>");
+<<<<<<< HEAD
+          let url = $("<label for='url'>URL</label>")
+          let urlInput = $("<input type='text' id='url' name='url'>").attr('value', item['url']);
           let submit = $("<button type='submit'>Update</button>");
+=======
+          let submit = $("<button type='submit'>Add</button>");
+>>>>>>> feature/update
           let remove = $("<button id='remove'>Delete</button>");
 
 
-        let fullForm = $(form).append(description).append(descriptionInput).append(submit).append(remove);
+        let fullForm = $(form)
+          .append(description).append(descriptionInput)
+          .append(url).append(urlInput)
+          .append(submit).append(remove);
+
         $('.form-box').append(fullForm)
 
         $('#remove').on('click', () => {
