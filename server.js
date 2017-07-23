@@ -284,17 +284,6 @@ app.get("/users/myList", (req, res) => {
   }
 })
 
-// Delete List
-app.post("/users/:id/delete", (req, res) => {
-  let list = req.params.id
-  knex('list')
-    .where('list_id', list)
-    .del()
-    .then(() => {
-      res.redirect('/users')
-    })
-})
-
 // Update List Page
 app.get("/list/:id/update", (req, res) => {
   let user_id = { user_id: req.session.user_id };
@@ -322,6 +311,17 @@ app.post("/list/:id/update", (req, res) => {
     })
 })
 
+// Delete List
+app.post("/users/:id/delete", (req, res) => {
+  let list = req.params.id
+  knex('list')
+    .where('list_id', list)
+    .del()
+    .then(() => {
+      res.redirect("/users")
+    })
+})
+
 // Update Task Render
 app.get("/task/:id/update", (req, res) => {
   let list = req.params.id
@@ -335,9 +335,9 @@ app.get("/task/:id/update", (req, res) => {
 })
 
 // Update Task Submission
-app.post("/task/:id/:num/update", (req, res) => {
-  let list = req.params.num
-  let tasks = req.params.id
+app.post("/task/:task/:id/update", (req, res) => {
+  let list = req.params.id
+  let tasks = req.params.task
   let description = req.body.description
   let url = req.body.url
 
@@ -349,6 +349,19 @@ app.post("/task/:id/:num/update", (req, res) => {
     })
     .then(() => {
       res.redirect(`/list/${list}/update`);
+    })
+})
+
+// Delete Task
+app.post("/task/:task/:id/delete", (req, res) => {
+  let list = req.params.id
+  let task = req.params.task
+
+  knex('task')
+    .where('task_id', task)
+    .del()
+    .then(() => {
+      res.redirect(`/list/${list}/update`)
     })
 })
 
@@ -368,6 +381,8 @@ app.post("/task/:id/add", (req, res) => {
       res.redirect(`/list/${list}/update`)
   })
 });
+
+
 
 
 // User Create List Page
