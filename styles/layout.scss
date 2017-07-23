@@ -137,26 +137,25 @@ body {
 
   }
 
-  .index-box{
-    margin: 5em 1em;
-  }
+  .list {
+    margin: 5em 4em;
 
-  .card {
-    float: left;
-    margin: 1em;
-    background: none;
-    border: solid .15em #ffef00;
-    border-radius: .25em;
-    padding: 1em;
-    height: 10em;
-    width: 17em;
-    background-color: #fffcbc;
-  }
+    input {
+      float: left;
+      margin: 1em;
+      background: none;
+      border: solid .15em #ffef00;
+      border-radius: .25em;
+      padding: 1em;
+      height: 10em;
+      width: 17em;
+      background-color: #fffcbc;
+    }
 
-  .card:hover {
-    border: solid .2em #639eff;
+    input:hover {
+      border: solid .2em #639eff;
+    }
   }
-
 
 
   .list-box {
@@ -164,7 +163,7 @@ body {
     border-radius: .25em;
     background-color: #fffcbc;
     margin: 10em auto;
-    height: 20em;
+    height: 100%;
     width: 30em;
     padding: 5em;
 

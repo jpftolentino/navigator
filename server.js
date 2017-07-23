@@ -382,9 +382,6 @@ app.post("/task/:id/add", (req, res) => {
   })
 });
 
-
-
-
 // User Create List Page
 app.get("/newList", (req, res) => {
   let user_id = { user_id: req.session.user_id };
@@ -419,7 +416,7 @@ app.post("/newList", (req, res) => {
     //     // console.log($('form'));
     //     // $('form').remove();
         // return $('form').remove();
-      res.redirect("/newList/" + list_id);
+      res.redirect(`/list/${list_id}/update`);
 
     })
 });
