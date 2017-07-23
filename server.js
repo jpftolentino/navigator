@@ -322,7 +322,7 @@ app.post("/list/:id/update", (req, res) => {
     })
 })
 
-// Update tasks ajax request
+// Update Task Render
 app.get("/task/:id/update", (req, res) => {
   let list = req.params.id
 
@@ -334,6 +334,7 @@ app.get("/task/:id/update", (req, res) => {
 
 })
 
+// Update Task Submission
 app.post("/task/:id/:num/update", (req, res) => {
   let list = req.params.num
   let tasks = req.params.id
@@ -349,6 +350,20 @@ app.post("/task/:id/:num/update", (req, res) => {
     })
 })
 
+// New Task Submission
+app.post("/task/:id/add", (req, res) => {
+  let list = req.params.id
+  let description = req.body.description
+
+  knex('task')
+    .insert({
+      fk_list_id: list,
+      description: description
+    })
+    .then((list_id) => {
+      res.redirect(`/list/${list}/update`)
+  })
+});
 
 
 // User Create List Page

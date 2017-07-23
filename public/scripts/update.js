@@ -18,7 +18,7 @@ $(document).ready(() => {
     }
 
     let formBox = (".form-box");
-      let form = $("<form method='POST' id='form1'></form>").attr('action', `/list/${id}/update`);
+      let form = $("<form method='POST'></form>").attr('action', `/list/${id}/update`);
         let title = $("<label for='title'>Title</label>");
         let titleInput = $("<input type='text' id='title' name='title'>").attr('value', currentList['title']);
         let category = $("<label for='category'>Category</label>");
@@ -41,18 +41,47 @@ $(document).ready(() => {
         url: `/task/${id}/update`
       }).done((tasks) => {
 
-      let formBox = (".form-box");
+      let listNumber = 1;
 
       for (item of tasks) {
-        let form = $("<form method='POST' id='form2'></form>").attr('action', `/task/${item['task_id']}/${id}/update`);
-          let description = $("<label for='description'>To Do</label>");
+        let form = $("<form method='POST'></form>").attr('action', `/task/${item['task_id']}/${id}/update`);
+          let description = $("<label for='description'>To-Do</label>");
           let descriptionInput = $("<input type='text' id='description' name='description'>").attr('value', item['description']);
           let submit = $("<button type='submit'>Update</button>");
 
         let fullForm = $(form).append(description).append(descriptionInput).append(submit);
-
         $('.form-box').append(fullForm)
+
+        $("<form method='POST'>")
+          .attr('action', `users/${item['task_id']}/delete`)
+          .append("<button type='submit'>Delete</button>")
+          .appendTo('.form-box')
+
+        listNumber = item['task_id'];
+
       }
+
+      $('.form-box').append("<button id='addTodo'>Add To-Do</button>")
+      $('#addTodo').on('click', () => {
+        let form = $("<form method='POST'></form>").attr('action', `/task/${id}/add`).attr('id', `${listNumber+1}`);
+          let description = $("<label for='description'>To-Do</label>");
+          let descriptionInput = $("<input type='text' id='description' name='description'>");
+          let submit = $("<button type='submit'>Update</button>");
+          let remove = $("<button id='remove'>Delete</button>");
+
+
+        let fullForm = $(form).append(description).append(descriptionInput).append(submit).append(remove);
+        $('.form-box').append(fullForm)
+
+        $('#remove').on('click', () => {
+          event.preventDefault();
+          $(`#${listNumber+1}`).remove();
+        })
+
+      })
+
+      $('.form-box').append("<a class='button' href='/users'>Submit</a>")
+
 
       })
     })
@@ -60,11 +89,6 @@ $(document).ready(() => {
     })
   })
 
-  // $('.form-box').append("<input id='submitAll' type='button' value='Submit'/>")
-  // $('#submitAll').on('click', () => {
-  //     $('#form1').submit()
-  //     $('#form2').submit()
-  // })
 
 
 })
