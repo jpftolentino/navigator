@@ -73,13 +73,13 @@ $(document).ready(() => {
         let form = $("<form method='POST'></form>").attr('action', `/task/${id}/add`).attr('id', `${listNumber+1}`);
           let description = $("<label for='description'>To-Do</label>");
           let descriptionInput = $("<input type='text' id='description' name='description'>");
-<<<<<<< HEAD
+
           let url = $("<label for='url'>URL</label>")
           let urlInput = $("<input type='text' id='url' name='url'>").attr('value', item['url']);
           let submit = $("<button type='submit'>Update</button>");
-=======
+
           let submit = $("<button type='submit'>Add</button>");
->>>>>>> feature/update
+  //feature/update
           let remove = $("<button id='remove'>Delete</button>");
 
 
