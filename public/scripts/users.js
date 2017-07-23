@@ -31,12 +31,12 @@ $(document).ready(() => {
 
         $('.user-box').append(fullBox)
 
-        $("<form method='GET'>")
+        $("<form id='#update' method='GET'>")
           .attr('action', `list/${item['list_id']}/update`)
           .append("<button type='submit'>Update</button>")
           .appendTo('.user-box')
 
-        $("<form method='POST'>")
+        $("<form id='#delete' method='POST'>")
           .attr('action', `users/${item['list_id']}/delete`)
           .append("<button type='submit'>Delete</button>")
           .appendTo('.user-box')
