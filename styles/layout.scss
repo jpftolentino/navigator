@@ -1,6 +1,7 @@
 body {
-  background-color: #EEE;
+  background-color: white;
 
+  /* All of the styling for the Nav Bar */
   nav {
     background-color: #639eff;
     position: fixed;
@@ -9,6 +10,7 @@ body {
     padding: 0 2em 0 0;
     border-bottom: solid .15em grey;
 
+    /* This is the Logo */
     img {
       height: 2.75em;
       width: 2.75em;
@@ -16,6 +18,7 @@ body {
       float: left;
     }
 
+    /* This is the Site Name */
     .name {
       color: white;
       float: left;
@@ -65,12 +68,14 @@ body {
       padding: .2em;
     }
 
+    /* Handles the Hover for all user buttons on nav bar */
     span:hover {
       background-color: #4288f7;
     }
 
   }
 
+  /* This is the element containing all the elements on the Users Profile page  */
   .user-box {
 
     margin: 5em 10em;
@@ -81,25 +86,28 @@ body {
       width: 1.8em;
     }
 
+    /* The box used to show the list and hold its tasks and attributes */
     .item-box {
-      border: solid .15em #afcbff;
+      border: solid .15em #ffef00;
       border-radius: .5em;
       padding: 1em;
       height: 10em;
       width: 17em;
       margin: 2em auto;
-      background-color: #e8f0ff;
+      background-color: #fffcbc;
     }
 
     .item-box:hover {
-      border: solid .2em grey;
+      border: solid .2em #639eff;
     }
 
+    /* Add List button */
     .add-list{
       width: 4.4em;
       margin: 0 auto;
     }
 
+    /* Decorates all of the links on the page */
     a {
       text-decoration: none;
       color: black;
@@ -110,11 +118,13 @@ body {
 
     }
 
+    /* To make the form elements wider */
     form {
       margin: 0 auto;
       width: 4em;
     }
 
+    /* This is styling for the list elements in the list box */
     span {
       display: block;
 
@@ -122,6 +132,7 @@ body {
 
   }
 
+  /* This is for the box on the Login and Registration Pages holding the form */
   .form-box {
     border: solid .15em black;
     margin: 10em auto;
@@ -129,6 +140,14 @@ body {
     width: 30em;
   }
 
+<<<<<<< HEAD
+  /* This is for the List Creation box holding the form */
+=======
+  .error-flash {
+    color: red;
+  }
+
+>>>>>>> cb671e594bff57cf37ceb58c667812b68362ec53
   .create-list {
     border: solid .15em black;
     margin: 10em auto;
@@ -137,28 +156,53 @@ body {
 
   }
 
-  input {
-    width: 28em;
-  }
-
+  /*   */
   .list {
-    margin: 5em;
+    margin: 5em 4em;
 
     input {
       float: left;
-      margin: 2em;
+      margin: 1em;
       background: none;
-      border: solid .15em #afcbff;
-      border-radius: .5em;
+      border: solid .15em #ffef00;
+      border-radius: .25em;
       padding: 1em;
       height: 10em;
       width: 17em;
-      background-color: #e8f0ff;
+      background-color: #fffcbc;
     }
 
     input:hover {
-      border: solid .2em grey;
+      border: solid .2em #639eff;
     }
+  }
+
+  /* This is the box holding the list on the Show List page  */
+  .list-box {
+    border: solid .15em #ffef00;
+    border-radius: .25em;
+    background-color: #fffcbc;
+    margin: 10em auto;
+    height: 100%;
+    width: 30em;
+    padding: 5em;
+
+    .url {
+      text-decoration: none;
+      color: #639eff;
+      border: solid .15em #639eff;
+      border-radius: .25em;
+      padding: .15em;
+    }
+
+    .url:hover {
+      border: solid .2em #266ee2;
+    }
+
+    li {
+      margin: 1em;
+    }
+
   }
 
 }

@@ -10,6 +10,7 @@ const sass          = require("node-sass-middleware");
 const app           = express();
 const cookieSession = require("cookie-session");
 const bcrypt        = require("bcrypt");
+const flash         = require('connect-flash');
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -56,6 +57,8 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 
+app.use(flash());
+
 // Mounts list resource to url
 app.use("/api/list", listRoutes(knex));
 
@@ -85,7 +88,10 @@ app.get("/list/:id", (req, res) => {
 // Login
 app.get("/login", (req, res) => {
   let user_id = { user_id: req.session.user_id };
-  res.render("login", user_id);
+  res.render("login", {
+    user_id,
+    message: req.flash('message')
+  })
 });
 
 app.post("/login", (req, res) => {
@@ -95,7 +101,8 @@ app.post("/login", (req, res) => {
 
   if (!email || !password) {
     loginCredentials = false;
-    res.status(401).send('Please enter a valid email/password')
+    req.flash('message', 'Please enter a valid email/password')
+    res.redirect('/login')
     return
   }
 
@@ -117,8 +124,9 @@ app.post("/login", (req, res) => {
       }
     }
     if (!loginCredentials) {
-      res.status(403).send('Please enter a valid email/password')
-      return;
+      req.flash('message', 'Please enter a valid email/password')
+      res.redirect('/login')
+      return
     }
   })
 })
@@ -126,7 +134,10 @@ app.post("/login", (req, res) => {
 // Registers
 app.get("/register", (req, res) => {
   let user_id = { user_id: req.session.user_id };
-  res.render("register", user_id);
+  res.render("register", {
+    user_id,
+    message: req.flash('message')
+  })
 });
 
 app.post("/register", (req, res) => {
@@ -139,13 +150,15 @@ app.post("/register", (req, res) => {
 
   if (password != passConfirmation) {
     invalidFormSubmit = true
-    res.status(401).send('Password does not match the confirm password.')
+    req.flash('message', 'Password does not match the confirm password')
+    res.redirect("/register")
     return
   }
 
   if (!handle.match(/^[a-zA-Z0-9]+$/)) {
     invalidFormSubmit = true
-    res.status(401).send('Sorry but no special characters such as <>/%#&? are allowed for the username');
+    req.flash('message', 'Username cannot contain special characters or spaces')
+    res.redirect("/register")
     return
   } else {
     handle = "@" + req.body.handle
@@ -153,7 +166,8 @@ app.post("/register", (req, res) => {
 
   if (!email || !password) {
     let invalidFormSubmit = true
-    res.status(401).send('Please enter a valid email/password')
+    req.flash('message', 'Please enter a valid email/password')
+    res.redirect("/register")
     return
   }
 
@@ -162,7 +176,8 @@ app.post("/register", (req, res) => {
     for (let user of result) {
       if (email === user.email) {
         let invalidFormSubmit = true
-        res.status(403).send('This email is already registered')
+        req.flash('message', 'This email is already registered')
+        res.redirect("/register")
         return
       }
     }
@@ -178,7 +193,6 @@ app.post("/register", (req, res) => {
         handle: handle
       })
       .then((user) => {
-        //res.json(results);
         req.session.user_id = user[0];
         res.redirect("/")
     });
@@ -226,12 +240,13 @@ app.post("/updateinfo", (req, res) => {
 
   let emailPromise = Promise.resolve();
   let passwordPromise = Promise.resolve();
-  if (newEmail) {
+  if (newEmail != "" && newPassword != "") {
     emailPromise = emailUpdater(user_id, newEmail);
-  }
-
-  if (newPassword) {
     passwordPromise = passwordUpdater(user_id, newPassword)
+  } else {
+    req.flash('message', 'Please enter a valid email AND password')
+    res.redirect('/users')
+    return
   }
 
   Promise.all([emailPromise, passwordPromise])
@@ -252,7 +267,10 @@ app.get("/users", (req, res) => {
   if (!user_id['user_id']) {
     res.redirect("/");
   } else {
-    res.render("users", user_id);
+    res.render("users", {
+      user_id,
+      message: req.flash('message')
+    })
   }
 });
 
@@ -284,6 +302,7 @@ app.get("/users/myList", (req, res) => {
   }
 })
 
+<<<<<<< HEAD
 knex('users')
 .join('contacts', 'users.id', 'contacts.user_id')
 .select('users.id', 'contacts.phone')
@@ -299,6 +318,8 @@ app.post("/users/:id/delete", (req, res) => {
     })
 })
 
+=======
+>>>>>>> 07dbe3d06c65d8f999bcb3a281d3c7f56c48de5e
 // Update List Page
 app.get("/list/:id/update", (req, res) => {
   let user_id = { user_id: req.session.user_id };
@@ -326,6 +347,17 @@ app.post("/list/:id/update", (req, res) => {
     })
 })
 
+// Delete List
+app.post("/users/:id/delete", (req, res) => {
+  let list = req.params.id
+  knex('list')
+    .where('list_id', list)
+    .del()
+    .then(() => {
+      res.redirect("/users")
+    })
+})
+
 // Update Task Render
 app.get("/task/:id/update", (req, res) => {
   let list = req.params.id
@@ -339,9 +371,9 @@ app.get("/task/:id/update", (req, res) => {
 })
 
 // Update Task Submission
-app.post("/task/:id/:num/update", (req, res) => {
-  let list = req.params.num
-  let tasks = req.params.id
+app.post("/task/:task/:id/update", (req, res) => {
+  let list = req.params.id
+  let tasks = req.params.task
   let description = req.body.description
   let url = req.body.url
 
@@ -353,6 +385,19 @@ app.post("/task/:id/:num/update", (req, res) => {
     })
     .then(() => {
       res.redirect(`/list/${list}/update`);
+    })
+})
+
+// Delete Task
+app.post("/task/:task/:id/delete", (req, res) => {
+  let list = req.params.id
+  let task = req.params.task
+
+  knex('task')
+    .where('task_id', task)
+    .del()
+    .then(() => {
+      res.redirect(`/list/${list}/update`)
     })
 })
 
@@ -372,7 +417,6 @@ app.post("/task/:id/add", (req, res) => {
       res.redirect(`/list/${list}/update`)
   })
 });
-
 
 // User Create List Page
 app.get("/newList", (req, res) => {
@@ -408,7 +452,7 @@ app.post("/newList", (req, res) => {
     //     // console.log($('form'));
     //     // $('form').remove();
         // return $('form').remove();
-      res.redirect("/newList/" + list_id);
+      res.redirect(`/list/${list_id}/update`);
 
     })
 });

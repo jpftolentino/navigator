@@ -17,6 +17,9 @@
     </div><br>
 
     <div class='form-box-update'>
+      <div class='error-flash'>
+        <% include ./partials/_flash%>
+      </div>
       <form action='/updateinfo' method='POST'>
         <div>
           <label for='email'>Email</label>

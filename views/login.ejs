@@ -7,6 +7,9 @@
     <header><% include ./partials/header %></header>
 
     <div class="form-box">
+      <div class='error-flash'>
+        <% include ./partials/_flash%>
+      </div>
       <form action='/login' method='POST'>
         <div>
           <label for='email'>Email</label>
