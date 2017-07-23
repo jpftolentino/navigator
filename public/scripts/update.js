@@ -63,7 +63,7 @@ $(document).ready(() => {
 
       $('.form-box').append("<button id='addTodo'>Add To-Do</button>")
       $('#addTodo').on('click', () => {
-        let form = $("<form method='POST'></form>").attr('action', `/task/${listNumber+1}/add`).attr('id', `${listNumber+1}`);
+        let form = $("<form method='POST'></form>").attr('action', `/task/${id}/add`).attr('id', `${listNumber+1}`);
           let description = $("<label for='description'>To-Do</label>");
           let descriptionInput = $("<input type='text' id='description' name='description'>");
           let submit = $("<button type='submit'>Update</button>");

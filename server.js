@@ -352,14 +352,16 @@ app.post("/task/:id/:num/update", (req, res) => {
 
 // New Task Submission
 app.post("/task/:id/add", (req, res) => {
-  let task = req.params.id
+  let list = req.params.id
+  let description = req.body.description
 
   knex('task')
     .insert({
-
+      fk_list_id: list,
+      description: description
     })
     .then((list_id) => {
-
+      res.redirect(`/list/${list}/update`)
   })
 });
 
