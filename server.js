@@ -422,8 +422,7 @@ app.post("/newList/:list_id", (req,res) => {
   let user_id = { user_id: req.session.user_id };
   let id = req.params.list_id
   let description = req.body.description;
-
-  console.log(description);
+  let url = req.body.url;
 
   if (!user_id['user_id']) {
     res.redirect("/");
@@ -433,7 +432,8 @@ app.post("/newList/:list_id", (req,res) => {
       .returning('task_id')
       .insert({
         fk_list_id: id,
-        description: description
+        description: description,
+        url: url
       }).then(() => {
     res.render("add_task", user_id);
     })

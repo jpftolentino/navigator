@@ -23,6 +23,7 @@ $(() => {
         method: 'POST',
       }).attr('id',id).appendTo($('.create-list'));
       $form.append('<input type="text" placeholder="What shall we do today?" name=description>');
+      $form.append('<input type="text" placeholder="What shall we do today?" name=url>');
       $form.append('<input type="submit" value="Add Task">');
       // $('<button>').appendTo($('form'));
 
