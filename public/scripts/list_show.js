@@ -20,9 +20,9 @@ $(() => {
       }
 
       // Put DOM items in variables to allow easier appending
-      let listName = $('<div>').text(title)
-      let listCategory = $('<div>').text(category)
-      let listTime = $('<div>').text(time)
+      let listName = $('<div id="name">').text(title)
+      let listCategory = $('<div id="category">').text(category)
+      let listTime = $('<div id="time">').text(time)
 
       $('.list-box').append(listName).append(listCategory).append(listTime).append('<ul>')
 
@@ -35,7 +35,7 @@ $(() => {
         //
         if(listID == id){
           $('<li>').text(description).appendTo($('ul'));
-          $(`<a href="http://${url}" class="url">`).text(url).appendTo($('ul'));
+          $(`<a href="http://${url}" class="url">`).text("Go To There").appendTo($('ul'));
         }
       }
   })
