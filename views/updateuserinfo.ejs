@@ -9,19 +9,17 @@
   <body>
     <header><% include ./partials/header %></header>
 
-    <main class='user-box'>
-
-    <div class='form-box-update'>
+    <div class="form-box">
       <div class='error-flash'>
         <% include ./partials/_flash%>
       </div>
       <form action='/updateuserinfo' method='POST'>
         <div>
-          <label for='email'>Email</label>
+          <label for='email'>Update Email</label>
           <input type='email' id='email' name='email'>
         </div>
         <div>
-          <label for='password'>Password</label>
+          <label for='password'>Update Password</label>
           <input type='password' id='password' name='password'>
         </div>
         <div class='button'>
@@ -30,6 +28,5 @@
       </form>
     </div>
 
-    </main>
 
   </body>
