@@ -11,7 +11,8 @@ $(() => {
           let category = list[item].category;
           let time = list[item].time;
 
-          let $container = $('<div>');
+          let $container = $('<div class="list"></div>');
+          let $title = $('<span>' + title + '</span>')
           let $category = $(`<span>Category: ${category}</span>`);
           let $time = $(`<span>Time: ${time}</span>`);
 
@@ -19,11 +20,10 @@ $(() => {
           let $form = $("<form>", {
             action: '/list/' + list_id,
             method: 'GET',
-          }).addClass('list').appendTo($($container));
+          }).appendTo($container);
           $form.append('<input type="submit" value="' + title + '">');
-          ($('input')).append($category);
+          $container.append($category);
           $container.append($time);
-
       }
 
 
