@@ -92,7 +92,7 @@ body {
     }
 
     .item-box:hover {
-      border: solid .2em grey;
+      border: solid .2em #639eff;
     }
 
     .add-list{
@@ -137,28 +137,38 @@ body {
 
   }
 
-  input {
-    width: 28em;
+  .index-box{
+    margin: 5em 1em;
   }
 
-  .list {
-    margin: 5em;
+  .card {
+    float: left;
+    margin: 1em;
+    background: none;
+    border: solid .15em #ffef00;
+    border-radius: .25em;
+    padding: 1em;
+    height: 10em;
+    width: 17em;
+    background-color: #fffcbc;
+  }
 
-    input {
-      float: left;
-      margin: 2em;
-      background: none;
-      border: solid .15em #ffef00;
-      border-radius: .25em;
-      padding: 1em;
-      height: 10em;
-      width: 17em;
-      background-color: #fffcbc;
-    }
+  .card:hover {
+    border: solid .2em #639eff;
+  }
 
-    input:hover {
-      border: solid .2em #639eff;
-    }
+
+
+  .list-box {
+    border: solid .15em #ffef00;
+    border-radius: .25em;
+    background-color: #fffcbc;
+    margin: 10em auto;
+    height: 20em;
+    width: 30em;
+    padding: 5em;
+
+
   }
 
 }

@@ -7,27 +7,36 @@ $(() => {
       let fixId = location.pathname.split('/');
       let id = fixId[2];
       let title = ""
+      let category = ""
+      let time = ""
 
       for(item in task){
         let listID = task[item].fk_list_id;
         if(id == listID){
           title = task[item].title;
+          category = task[item].category;
+          time = task[item].time;
         }
       }
 
-      $('<div>').text(title).appendTo($('body'));
+      // Put DOM items in variables to allow easier appending
+      let listName = $('<div>').text(title)
+      let listCategory = $('<div>').text(category)
+      let listTime = $('<div>').text(time)
 
-      $('<ul>').appendTo($('body'));
+      $('.list-box').append(listName).append(listCategory).append(listTime).append('<ul>')
+
       for(item in task){
         let taskID = task[item].task_id;
         let listID = task[item].fk_list_id;
         let description = task[item].description;
+        let url = task[item].url;
         // let list
         //
         if(listID == id){
           $('<li>').text(description).appendTo($('ul'));
+          $(`<a href="http://${url}" class="url">`).text(url).appendTo($('ul'));
         }
       }
   })
 });
-
