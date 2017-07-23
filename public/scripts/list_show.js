@@ -34,14 +34,13 @@ $(() => {
         // let list
         //
         if(listID == id){
-<<<<<<< HEAD
+
           $('<div>').text(description).appendTo($('body'));
           $('<div>').html('<a href=\'' + url + '\'>' + url + '</a>').appendTo($('body'));
           $('<br/>').appendTo($('body'));
-=======
           $('<li>').text(description).appendTo($('ul'));
           $(`<a href="http://${url}" class="url">`).text("Go To There").appendTo($('ul'));
->>>>>>> 07dbe3d06c65d8f999bcb3a281d3c7f56c48de5e
+
         }
       }
   })

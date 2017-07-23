@@ -302,7 +302,6 @@ app.get("/users/myList", (req, res) => {
   }
 })
 
-<<<<<<< HEAD
 knex('users')
 .join('contacts', 'users.id', 'contacts.user_id')
 .select('users.id', 'contacts.phone')
@@ -318,8 +317,6 @@ app.post("/users/:id/delete", (req, res) => {
     })
 })
 
-=======
->>>>>>> 07dbe3d06c65d8f999bcb3a281d3c7f56c48de5e
 // Update List Page
 app.get("/list/:id/update", (req, res) => {
   let user_id = { user_id: req.session.user_id };

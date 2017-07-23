@@ -88,26 +88,9 @@ $(document).ready(() => {
         let form = $("<form method='POST'></form>").attr('action', `/task/${id}/add`).attr('id', `${listNumber+1}`);
           let description = $("<label for='description'>To-Do</label>");
           let descriptionInput = $("<input type='text' id='description' name='description'>");
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> cb671e594bff57cf37ceb58c667812b68362ec53
->>>>>>> 07dbe3d06c65d8f999bcb3a281d3c7f56c48de5e
           let url = $("<label for='url'>URL</label>")
           let urlInput = $("<input type='text' id='url' name='url'>");
-          let submit = $("<button type='submit'>Update</button>");
-<<<<<<< HEAD
           let submit = $("<button type='submit'>Add</button>");
-=======
-<<<<<<< HEAD
-=======
-
-          let submit = $("<button type='submit'>Add</button>");
-  //feature/update
->>>>>>> cb671e594bff57cf37ceb58c667812b68362ec53
->>>>>>> 07dbe3d06c65d8f999bcb3a281d3c7f56c48de5e
           let remove = $("<button id='remove'>Delete</button>");
 
 
