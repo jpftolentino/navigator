@@ -206,6 +206,15 @@ app.get("/logout", (req, res) => {
 });
 
 // User update email and password
+
+app.get("/updateuserinfo", (req, res) => {
+  let user_id = { user_id: req.session.user_id };
+  res.render("updateuserinfo", {
+    user_id,
+    message: req.flash('message')
+  })
+});
+
 // Helper function for email update
 function emailUpdater(user_id, newEmail) {
   return knex('users')
@@ -233,7 +242,7 @@ function passwordUpdater(user_id, newPassword) {
 };
 
 // Handles post requests for updates
-app.post("/updateinfo", (req, res) => {
+app.post("/updateuserinfo", (req, res) => {
   let user_id = req.session.user_id;
   let newEmail = req.body.email;
   let newPassword = req.body.password;
@@ -245,13 +254,14 @@ app.post("/updateinfo", (req, res) => {
     passwordPromise = passwordUpdater(user_id, newPassword)
   } else {
     req.flash('message', 'Please enter a valid email AND password')
-    res.redirect('/users')
+    res.redirect('/updateuserinfo')
     return
   }
 
   Promise.all([emailPromise, passwordPromise])
   .then(() => {
-    res.redirect('/users');
+    req.flash('message', 'User information updated')
+    res.redirect('/updateuserinfo');
   });
 
 });

@@ -15,24 +15,10 @@
     <div class='add-list'>
       <a href='/newList'>Add List</a>
     </div><br>
+    <div class='updateinfo-button'>
+      <a href='/updateuserinfo'>Update Information</a>
+    </div><br>
 
-    <div class='form-box-update'>
-      <div class='error-flash'>
-        <% include ./partials/_flash%>
-      </div>
-      <form action='/updateinfo' method='POST'>
-        <div>
-          <label for='email'>Email</label>
-          <input type='email' id='email' name='email'>
-        </div>
-        <div>
-          <label for='password'>Password</label>
-          <input type='password' id='password' name='password'>
-        </div>
-        <div class='button'>
-          <button type='submit'>Update</button>
-        </div>
-      </form>
     </div>
 
     </main>
