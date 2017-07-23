@@ -22,10 +22,13 @@ $(() => {
         let taskID = task[item].task_id;
         let listID = task[item].fk_list_id;
         let description = task[item].description;
+        let url = task[item].url;
         // let list
         //
         if(listID == id){
-          $('<li>').text(description).appendTo($('ul'));
+          $('<div>').text(description).appendTo($('body'));
+          $('<div>').html('<a href=\'' + url + '\'>' + url + '</a>').appendTo($('body'));
+          $('<br/>').appendTo($('body'));
         }
       }
   })

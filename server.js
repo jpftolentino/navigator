@@ -284,12 +284,16 @@ app.get("/users/myList", (req, res) => {
   }
 })
 
+knex('users')
+.join('contacts', 'users.id', 'contacts.user_id')
+.select('users.id', 'contacts.phone')
+
 // Delete List
 app.post("/users/:id/delete", (req, res) => {
   let list = req.params.id
   knex('list')
     .where('list_id', list)
-    .del()
+    .onDelete()
     .then(() => {
       res.redirect('/users')
     })
