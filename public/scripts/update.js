@@ -66,7 +66,7 @@ $(document).ready(() => {
         let form = $("<form method='POST'></form>").attr('action', `/task/${id}/add`).attr('id', `${listNumber+1}`);
           let description = $("<label for='description'>To-Do</label>");
           let descriptionInput = $("<input type='text' id='description' name='description'>");
-          let submit = $("<button type='submit'>Update</button>");
+          let submit = $("<button type='submit'>Add</button>");
           let remove = $("<button id='remove'>Delete</button>");
 
 
