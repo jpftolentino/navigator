@@ -380,13 +380,14 @@ app.post("/newList", (req, res) => {
       })
       .then((list_id) => {
 
-        // $('<p>').text('Hey it worked!').append($('body'));
-        // console.log(id);
-        // console.log($('form'));
-        // $('form').remove();
-        // res.redirect("/newList");
-      })
+    //     // $('<p>').text('Hey it worked!').append($('body'));
+    //     // console.log(id);
+    //     // console.log($('form'));
+    //     // $('form').remove();
+        // return $('form').remove();
+      res.redirect("/newList/" + list_id);
 
+    })
 });
 
 app.get("/newList/:list_id" , (req,res) => {
@@ -397,6 +398,8 @@ app.get("/newList/:list_id" , (req,res) => {
     res.render("add_task", user_id);
   }
 });
+
+
 
 // --><-- //
 
