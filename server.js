@@ -318,13 +318,12 @@ app.post("/list/:id/update", (req, res) => {
       time: time
     })
     .then(() => {
-      res.redirect('/users')
+      res.redirect(`/list/${list}/update`)
     })
 })
 
 // Update tasks ajax request
-app.get("/list/:id/tasks", (req, res) => {
-  let id = req.session.user_id
+app.get("/task/:id/update", (req, res) => {
   let list = req.params.id
 
   knex('task')
@@ -333,6 +332,21 @@ app.get("/list/:id/tasks", (req, res) => {
       res.json(results);
     })
 
+})
+
+app.post("/task/:id/:num/update", (req, res) => {
+  let list = req.params.num
+  let tasks = req.params.id
+  let description = req.body.description
+
+  knex('task')
+    .where('task_id', tasks)
+    .update({
+      description: description
+    })
+    .then(() => {
+      res.redirect(`/list/${list}/update`);
+    })
 })
 
 
