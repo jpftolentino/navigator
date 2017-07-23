@@ -89,7 +89,7 @@ body {
     /* The box used to show the list and hold its tasks and attributes */
     .item-box {
       border: solid .15em #ffef00;
-      border-radius: .5em;
+      border-radius: .25em;
       padding: 1em;
       height: 10em;
       width: 17em;
@@ -103,8 +103,9 @@ body {
 
     /* Add List button */
     .add-list{
-      width: 4.4em;
-      margin: 0 auto;
+      width: 5em;
+      margin: 2em auto;
+
     }
 
     /* Add Update info button */
