@@ -414,6 +414,27 @@ app.get("/newList/:list_id" , (req,res) => {
   }
 });
 
+app.post("/newList/:list_id", (req,res) => {
+  let user_id = { user_id: req.session.user_id };
+  let id = req.params.list_id
+  let description = req.body.description;
+
+  console.log(description);
+
+  if (!user_id['user_id']) {
+    res.redirect("/");
+  } else {
+
+    knex('task')
+      .returning('task_id')
+      .insert({
+        fk_list_id: id,
+        description: description
+      }).then(() => {
+    res.render("add_task", user_id);
+    })
+  }
+});
 
 
 
