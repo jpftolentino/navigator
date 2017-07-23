@@ -311,7 +311,7 @@ app.post("/users/:id/delete", (req, res) => {
   let list = req.params.id
   knex('list')
     .where('list_id', list)
-    .onDelete()
+    .del()
     .then(() => {
       res.redirect('/users')
     })
