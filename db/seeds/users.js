@@ -67,42 +67,48 @@ exports.seed = function(knex, Promise) {
           .returning('task_id')
           .insert({
             fk_list_id: 1,
-            description: 'Do 10 pushups'
+            description: 'Do 10 pushups',
+            url: 'http://google.ca'
           }),
 
         knex('task')
           .returning('task_id')
           .insert({
             fk_list_id: 1,
-            description: 'Do 10 jumping jacks'
+            description: 'Do 10 jumping jacks',
+            url: 'http://google.ca'
           }),
 
         knex('task')
           .returning('task_id')
           .insert({
             fk_list_id: 2,
-            description: 'Juon 2'
+            description: 'Juon 2',
+            url: 'http://google.ca'
           }),
 
         knex('task')
           .returning('task_id')
           .insert({
             fk_list_id: 2,
-            description: 'Paranormal Activity'
+            description: 'Paranormal Activity',
+            url: 'http://google.ca'
           }),
 
         knex('task')
           .returning('task_id')
           .insert({
             fk_list_id: 3,
-            description: 'Read the Game'
+            description: 'Read the Game',
+            url: 'http://google.ca'
           }),
 
         knex('task')
           .returning('task_id')
           .insert({
             fk_list_id: 3,
-            description: 'Go to a bar'
+            description: 'Go to a bar',
+            url: 'http://google.ca'
           }),
       ]);
     });
