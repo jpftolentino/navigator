@@ -15,12 +15,25 @@
         <input type='text' id='title' name='title'>
       </div>
       <div>
-        <label for='category'>Category</label>
-        <input type='text' id='category' name='category'>
+        <label for='category'>Category: </label>
+        <select name='category'>
+          <option value='Play'>Play</option>
+          <option value='Read'>Read</option>
+          <option value='Watch'>Watch</option>
+        </select>
       </div>
       <div>
-        <label for='time'>Time</label>
-        <input type='integer' id='time' name='time'>
+        <label for='time'>Time: </label>
+        <select name='time'>
+          <option value=5>5 Min</option>
+          <option value=10>10 Min</option>
+          <option value=15>15 Min</option>
+          <option value=30>30 Min</option>
+          <option value=60>60 Min</option>
+          <option value=120>120 Min</option>
+          <option value=180>180 Min</option>
+          <option value=240>240 Min</option>
+        </select>
       </div>
       <button type='submit'>Submit</button>
     </form>

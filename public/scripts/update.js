@@ -23,19 +23,44 @@ $(document).ready(() => {
     // Building the form dynamically to get all of the nesting correct
     let formBox = (".form-box");
       let form = $("<form method='POST'></form>").attr('action', `/list/${id}/update`);
+
         let title = $("<label for='title'>Title</label>");
         let titleInput = $("<input type='text' id='title' name='title'>").attr('value', currentList['title']);
-        let category = $("<label for='category'>Category</label>");
-        let categoryInput = $("<input type='text' id='category' name='category'>").attr('value', currentList['category']);
-        let time = $("<label for='time'>Time</label>");
-        let timeInput = $("<input type='integer' id='time' name='time'>").attr('value', currentList['time'])
+
+        let categoryLabel = $("<label for='category'>Category: </label>");
+        let categorySelect = $("<select name='category'></select>");
+          let categoryCurrent = $(`<option value='${currentList['category']}'>- ${currentList['category']} -</option>`);
+          let categoryOne = $("<option value='Play'>Play</option>");
+          let categoryTwo = $("<option value='Read'>Read</option>");
+          let categoryThree = $("<option value='Watch'>Watch</option>")
+
+        let category = $(categorySelect)
+          .append(categoryCurrent).append(categoryOne)
+          .append(categoryTwo).append(categoryThree);
+
+        let timeLabel = $("<label for='time'>Time: </label>");
+        let timeSelect = $("<select name='time'></select>");
+          let timecurrent = $(`<option value='${currentList['time']}'>- ${currentList['time']} Min -</option>`)
+          let timeOne = $("<option value=5>5 Min</option>");
+          let timeTwo = $("<option value=10>10 Min</option>");
+          let timeThree = $("<option value=15>15 Min</option>");
+          let timeFour = $("<option value=30>30 Min</option>");
+          let timeFive = $("<option value=60>60 Min</option>")
+          let timeSix = $("<option value=120>120 Min</option>")
+          let timeSeven = $("<option value=180>180 Min</option>")
+          let timeEight = $("<option value=240>240 Min</option>")
+
+        let time = $(timeSelect)
+          .append(timecurrent).append(timeOne).append(timeTwo).append(timeThree).append(timeFour)
+          .append(timeFive).append(timeSix).append(timeSeven).append(timeEight)
+
         let submit = $("<button type='submit'>Update</button>")
 
     // Compiling all elements into a full form
     let fullForm = $(form)
       .append(title).append(titleInput)
-      .append(category).append(categoryInput)
-      .append(time).append(timeInput)
+      .append(categoryLabel).append(category)
+      .append(timeLabel).append(time)
       .append(submit)
 
     // Appending my new form to the page using a container already there
@@ -118,8 +143,4 @@ $(document).ready(() => {
     })
   })
 
-
-
 })
-
-//minor change
