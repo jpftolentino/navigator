@@ -20,7 +20,7 @@ $(() => {
 
 
           $('<div>').addClass('mixAni' + list_id).appendTo($('.container'));
-          $clickableLink.addClass('mix').addClass(category).addClass(time).addClass('button').appendTo($('.mixAni'+list_id));
+          $clickableLink.addClass('mix').addClass(category).addClass('t'+ time).addClass('button').appendTo($('.mixAni'+list_id));
           $clickableLink.append($title);
           $clickableLink.append($category);
           $clickableLink.append($time);
