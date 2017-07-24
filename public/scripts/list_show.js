@@ -35,9 +35,6 @@ $(() => {
         //
         if(listID == id){
 
-          // $('<div>').text(description).appendTo($('body'));
-          // $('<div>').html('<a href=\'' + url + '\'>' + url + '</a>').appendTo($('body'));
-          // $('<br/>').appendTo($('body'));
           $('<li>').text(description).appendTo($('ul'));
           $(`<a href="http://${url}" class="url">`).text("Go To There").appendTo($('ul'));
 
@@ -46,4 +43,3 @@ $(() => {
   })
 });
 
-//minor change

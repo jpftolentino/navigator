@@ -19,7 +19,7 @@ $(() => {
           let $clickableLink = $('<a href="/list/'+ list_id+'"></a>');
 
 
-          $('<div>').addClass('mixAni' + list_id).appendTo($('.container'));
+          $('<div>').addClass('mixAni' + list_id).prependTo($('.container'));
           $clickableLink.addClass('mix').addClass(category).addClass('t'+ time).addClass('button').appendTo($('.mixAni'+list_id));
           $clickableLink.append($title);
           $clickableLink.append($category);

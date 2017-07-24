@@ -22,20 +22,6 @@ const listRoutes = require("./routes/list");
 const taskRoutes = require("./routes/task");
 const usersRoutes = require("./routes/users");
 
-
-// const getCurrentUser = (user_id) => {
-//   return knex('users')
-//     .where('id', user_id)
-//     .first()
-//     .then((user) => {
-//       return user.handle;
-//     })
-// }
-
-// Load the logger first so all (static) HTTP requests are logged to STDOUT
-// 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes,
-// yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
@@ -74,6 +60,11 @@ app.get("/", (req, res) => {
   // getCurrentUser(user_id).then((currentUser) => {
     let dataIntoForm = { user_id: user_id}
     res.render('index', dataIntoForm);
+  // })
+});
+
+app.get("/about", (req, res) => {
+    res.render('about');
   // })
 });
 
@@ -266,7 +257,6 @@ app.post("/updateuserinfo", (req, res) => {
 
 });
 
-// --><-- //
 
 // --> Users Requests <-- //
 
@@ -436,7 +426,6 @@ app.get("/newList", (req, res) => {
 })
 
 //User Generates a list and redirects user to a new page where they have to input task
-
 app.post("/newList", (req, res) => {
 
     let user = req.session.user_id
@@ -453,12 +442,6 @@ app.post("/newList", (req, res) => {
         time: time
       })
       .then((list_id) => {
-
-    //     // $('<p>').text('Hey it worked!').append($('body'));
-    //     // console.log(id);
-    //     // console.log($('form'));
-    //     // $('form').remove();
-        // return $('form').remove();
       res.redirect(`/list/${list_id}/update`);
 
     })
@@ -495,9 +478,6 @@ app.post("/newList/:list_id", (req,res) => {
   }
 });
 
-
-
-// --><-- //
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

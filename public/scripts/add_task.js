@@ -57,14 +57,3 @@ $(() => {
     })
   })
 });
-
-// $("<form>", {
-//             action: '/list/' + list_id,
-//             method: 'GET',
-//           }).addClass('list').appendTo($('body'));
-
-//     <form method='POST' action='/newList/<%=  %>'>
-//       <label>Add Task:</label>
-//       <input type='text' id='task' name='task'>
-//       <button type='submit'>Add Task</button>
-//     </form>

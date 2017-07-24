@@ -8,7 +8,7 @@ $(document).ready(() => {
     }).done((user) => {
 
         for (item in user) {
-          $("<div id='username'>").text(user[item].name).prependTo('.user-box')
+          $("<div id='username'>").text(user[item].handle).prependTo('.user-box')
         }
 
     })
