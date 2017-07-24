@@ -77,12 +77,12 @@ body {
 
   /* This is the element containing all the elements on the Users Profile page  */
   .user-box {
-    margin: 5em 10em;
+    margin-top: 5em;
 
     #username {
       font-size: 5em;
-      margin: .5em auto;
-      width: 1.8em;
+      margin: .2em auto;
+      width: 2.1em;
     }
 
     /* The box used to show the list and hold its tasks and attributes */
@@ -92,25 +92,37 @@ body {
       padding: 1em;
       height: 10em;
       width: 17em;
-      margin: 2em auto;
+      margin: 0 2em;
       background-color: #fffcbc;
       float: left;
+      position: relative;
     }
 
     .item-box:hover {
       border: solid .2em #639eff;
     }
 
+    #update {
+      margin: 0;
+
+      width: 0;
+    }
+
+    #delete {
+      margin: 0;
+      float: left;
+    }
+
     /* Add List button */
     .add-list{
-      width: 5em;
-      margin: 2em;
+      width: 4.4em;
+      margin: 2em auto;
 
     }
 
     /* Add Update info button */
     .updateinfo-button{
-      width: 10em;
+      width: 9.5em;
       margin: 0 auto;
     }
 
@@ -125,17 +137,12 @@ body {
 
     }
 
-    /* To make the form elements wider */
-    form {
-      margin: 0 auto;
-      width: 4em;
-    }
 
-    /* This is styling for the list elements in the list box */
     span {
       display: block;
-
+      margin: 0 2em;
     }
+
 
   }
 

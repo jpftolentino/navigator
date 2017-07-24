@@ -29,17 +29,19 @@ $(document).ready(() => {
 
         let fullBox = $(itemBox).append(title).append(category).append(time)
 
-        $('.user-box').append(fullBox)
-
-        $("<form id='#update' method='GET'>")
+        let update = $("<form id='#update' method='GET'>")
           .attr('action', `list/${item['list_id']}/update`)
           .append("<button type='submit'>Update</button>")
           .appendTo('.user-box')
 
-        $("<form id='#delete' method='POST'>")
+        let remove = $("<form id='#delete' method='POST'>")
           .attr('action', `users/${item['list_id']}/delete`)
           .append("<button type='submit'>Delete</button>")
           .appendTo('.user-box')
+
+        let boxSet = $(fullBox).append(update).append(remove)
+
+        $('.user-box').append(boxSet)
 
       }
 
