@@ -22,7 +22,7 @@ $(document).ready(() => {
 
     // Building the form dynamically to get all of the nesting correct
     let formBox = (".form-style-6");
-      let form = $("<form method='POST'></form>").attr('action', `/list/${id}/update`);
+      let form = $("<form id='makeList' method='POST'></form>").attr('action', `/list/${id}/update`);
 
         let title = $("<label for='title'>Title</label>");
         let titleInput = $("<input type='text' id='title' name='title'>").attr('value', currentList['title']);
@@ -64,6 +64,7 @@ $(document).ready(() => {
       .append(submit)
 
     // Appending my new form to the page using a container already there
+    $(formBox).append(`<h1>List</h1>`)
     $(formBox).append(fullForm)
 
     // Nested AJAX call to get all tasks associated with the list currently being edited
@@ -100,7 +101,7 @@ $(document).ready(() => {
         $("<form method='POST'>")
           .attr('action', `/task/${item['task_id']}/${id}/delete`)
           .append("<button type='submit'>Delete</button>")
-          .appendTo('.form-box')
+          .appendTo('.form-style-6')
 
         // Increments the task currently on to its task_id
         listNumber = item['task_id'];
@@ -124,7 +125,7 @@ $(document).ready(() => {
           .append(url).append(urlInput)
           .append(submit).append(remove);
 
-        $('.form-style-6').append(fullForm)
+        $('#makeList').append(fullForm)
 
         // Removes the new todo form by clearing it from the DOM before it is submitted
         $('#remove').on('click', () => {

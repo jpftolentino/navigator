@@ -25,7 +25,7 @@ $(document).ready(() => {
         let itemBox = $("<div class='item-box'>")
         let title = $(`<span class='title'>${item['title']}</span>`)
         let category = $(`<span class='category'>Category: ${item['category']}</span>`)
-        let time = $(`<span class='time'>Time: ${item['time']}</span>`)
+        let time = $(`<span class='time'>Time: ${item['time']} Min</span>`)
 
         let fullBox = $(itemBox).append(title).append(category).append(time)
 

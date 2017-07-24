@@ -81,7 +81,7 @@ body {
 
     #username {
       font-size: 5em;
-      margin: .2em auto;
+      margin: .05em auto;
       width: 2.1em;
     }
 
@@ -92,7 +92,7 @@ body {
       padding: 1em;
       height: 10em;
       width: 17em;
-      margin: 3em 2em;
+      margin: 2em;
       background-color: #fffcbc;
       float: left;
 
@@ -102,8 +102,12 @@ body {
       border: solid .2em #639eff;
     }
 
+    .title {
+      font-size: 110%;
+    }
+
     span {
-      margin: 0 1em;
+      margin: .25em 0;
       clear: both;
       display: block;
 
@@ -117,23 +121,30 @@ body {
         background: none;
         text-decoration: none;
         color: black;
-        border: solid .15em blue;
+        border: solid .15em black;
         border-radius: .25em;
         padding: .2em;
       }
 
+    }
 
+    button:hover {
+      border-color: #639eff;
     }
 
     /* Add List button */
     .add-list{
       width: 6em;
-      margin: 2em auto 0;
+      margin: .5em auto 0;
       border: solid .1em black;
       border-radius: .25em;
       padding: 1em;
       font-size: 1.5em;
 
+    }
+
+    .add-list:hover {
+      border-color: #639eff;
     }
 
     /* Add Update info button */
@@ -156,13 +167,6 @@ body {
       // width: 4em;
 
     }
-
-    //
-    // span {
-    //   display: block;
-    //   margin: 0 2em;
-    // }
-
 
   }
 
@@ -262,13 +266,13 @@ body {
 
   }
 
-  .input {
-    text-decoration: none;
-    color: #639eff;
-    border: solid .15em #639eff;
-    border-radius: .25em;
-    padding: .15em;
-  }
+  // .input {
+  //   text-decoration: none;
+  //   color: #639eff;
+  //   border: solid .15em #639eff;
+  //   border-radius: .25em;
+  //   padding: .15em;
+  // }
 
 }
 
@@ -347,5 +351,21 @@ body {
 }
 .form-style-6 input[type="submit"]:hover,
 .form-style-6 input[type="button"]:hover{
+  background: #4a6aa0;
+}
+
+
+
+.form-style-6 .input{
+  margin-top: 3%;
+  width: 100%;
+  padding: 3% 43%;
+  background: #639eff;
+  border-bottom: 2px solid #639eff;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+.form-style-6 .input:hover {
   background: #4a6aa0;
 }
