@@ -212,6 +212,14 @@ body {
     }
   }
 
+  button{
+
+    background-color: #639eff;
+    color: #ffffff;
+    border-radius: .25em;
+    border: solid .15em #ffef00;
+  }
+
   a.button{
 
       margin: 3% 2% 0%;
@@ -225,6 +233,8 @@ body {
       text-decoration: none;
 
       text-align: center;
+
+
 
       .title {
 
