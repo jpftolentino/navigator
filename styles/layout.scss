@@ -134,11 +134,11 @@ body {
 
     /* Add List button */
     .add-list{
-      width: 6em;
+      width: 5em;
       margin: .5em auto 0;
       border: solid .1em black;
       border-radius: .25em;
-      padding: 1em;
+      padding: .5em;
       font-size: 1.5em;
 
     }
@@ -353,8 +353,6 @@ body {
 .form-style-6 input[type="button"]:hover{
   background: #4a6aa0;
 }
-
-
 
 .form-style-6 .input{
   margin-top: 3%;
