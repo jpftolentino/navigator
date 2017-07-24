@@ -8,8 +8,20 @@
 
   <body>
     <header><% include ./partials/header %></header>
+    <div class="form-style-6">
+      <h1>Update Email and Password</h1>
+      <div class='error-flash'>
+        <% include ./partials/_flash%>
+      </div>
+        <form action='/updateuserinfo' method='POST'>
+          <input type="email" name="email" placeholder="New Email" />
+          <input type="password" name="password" placeholder="New Password" />
+          <input type="submit" value="Update" />
+        </form>
+    </div>
 
-    <div class="form-box">
+
+<!--     <div class="form-box">
       <div class='error-flash'>
         <% include ./partials/_flash%>
       </div>
@@ -26,7 +38,7 @@
           <button type='submit'>Update</button>
         </div>
       </form>
-    </div>
+    </div> -->
 
 
   </body>
