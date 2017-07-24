@@ -117,7 +117,7 @@ $(document).ready(() => {
           let url = $("<label for='url'>URL</label>")
           let urlInput = $("<input type='text' id='url' name='url'>");
           let submit = $("<button type='submit'>Add</button>");
-          let remove = $("<button id='remove'>Delete</button>");
+          let remove = $(`<button id='remove'>Delete</button>`);
 
 
         let fullForm = $(form)

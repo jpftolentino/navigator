@@ -22,7 +22,8 @@ $(document).ready(() => {
 
 
       for (item of list) {
-        let itemBox = $("<div class='item-box'>")
+
+        let itemBox = $(`<div class='item-box'>`)
         let title = $(`<span class='title'>${item['title']}</span>`)
         let category = $(`<span class='category'>Category: ${item['category']}</span>`)
         let time = $(`<span class='time'>Time: ${item['time']} Min</span>`)
@@ -40,8 +41,9 @@ $(document).ready(() => {
           .appendTo('.user-box')
 
         let boxSet = $(fullBox).append(update).append(remove)
+        let linkBox = $(`<a href='/list/${item['list_id']}'>`).append(boxSet)
 
-        $('.user-box').append(boxSet)
+        $('.user-box').append(linkBox)
 
       }
 
