@@ -134,7 +134,7 @@ $(document).ready(() => {
 
       })
 
-      $('.form-style-6').append("<a class='button' href='/users'>Submit</a>")
+      $('.form-style-6').append("<a class='input' href='/users'>Submit</a>")
 
 
       })

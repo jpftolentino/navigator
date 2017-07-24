@@ -92,31 +92,47 @@ body {
       padding: 1em;
       height: 10em;
       width: 17em;
-      margin: 0 2em;
+      margin: 3em 2em;
       background-color: #fffcbc;
       float: left;
-      position: relative;
+
     }
 
     .item-box:hover {
       border: solid .2em #639eff;
     }
 
-    #update {
-      margin: 0;
+    span {
+      margin: 0 1em;
+      clear: both;
+      display: block;
 
-      width: 0;
     }
 
-    #delete {
-      margin: 0;
+    form {
+      margin: 1em 1.5em 0;
       float: left;
+
+      button {
+        background: none;
+        text-decoration: none;
+        color: black;
+        border: solid .15em blue;
+        border-radius: .25em;
+        padding: .2em;
+      }
+
+
     }
 
     /* Add List button */
     .add-list{
-      width: 4.4em;
-      margin: 2em auto;
+      width: 6em;
+      margin: 2em auto 0;
+      border: solid .1em black;
+      border-radius: .25em;
+      padding: 1em;
+      font-size: 1.5em;
 
     }
 
@@ -124,24 +140,28 @@ body {
     .updateinfo-button{
       width: 9.5em;
       margin: 0 auto;
+      border: solid .15em black;
+      border-radius: .25em;
+      padding: .2em;
+
     }
 
     /* Decorates all of the links on the page */
     a {
       text-decoration: none;
       color: black;
-      border: solid .15em black;
-      border-radius: .25em;
-      padding: .2em;
-      width: 4em;
+      // border: solid .15em black;
+      // border-radius: .25em;
+      // padding: .2em;
+      // width: 4em;
 
     }
 
-
-    span {
-      display: block;
-      margin: 0 2em;
-    }
+    //
+    // span {
+    //   display: block;
+    //   margin: 0 2em;
+    // }
 
 
   }
@@ -240,6 +260,14 @@ body {
       margin: 1em;
     }
 
+  }
+
+  .input {
+    text-decoration: none;
+    color: #639eff;
+    border: solid .15em #639eff;
+    border-radius: .25em;
+    padding: .15em;
   }
 
 }
