@@ -6,22 +6,15 @@
   <body>
     <header><% include ./partials/header %></header>
 
-    <div class="form-box">
+    <div class="form-style-6">
+      <h1>Login</h1>
       <div class='error-flash'>
         <% include ./partials/_flash%>
       </div>
       <form action='/login' method='POST'>
-        <div>
-          <label for='email'>Email</label>
-          <input type='email' id='handle' name='email'>
-        </div>
-        <div>
-          <label for='password'>Password</label>
-          <input type='password' id='password' name='password'>
-        </div>
-        <div class='button'>
-        <button type='submit'>Login</button>
-        </div>
+        <input type='email' name="email" placeholder='Email' />
+        <input type='password' name='password' id='password' placeholder='Password'>
+        <input type="submit" value="Submit" />
       </form>
     </div>
 
