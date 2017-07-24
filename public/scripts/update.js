@@ -21,7 +21,7 @@ $(document).ready(() => {
     }
 
     // Building the form dynamically to get all of the nesting correct
-    let formBox = (".form-box");
+    let formBox = (".form-style-6");
       let form = $("<form method='POST'></form>").attr('action', `/list/${id}/update`);
 
         let title = $("<label for='title'>Title</label>");
@@ -94,7 +94,7 @@ $(document).ready(() => {
           .append(submit);
 
         // Appending the full form to the page using the form box already there
-        $('.form-box').append(fullForm)
+        $(".form-style-6").append(fullForm)
 
         // Deletes todo from the database
         $("<form method='POST'>")
@@ -108,7 +108,7 @@ $(document).ready(() => {
       }
 
       // Builds and adds a form with a new to-do to the page dynamically
-      $('.form-box').append("<button id='addTodo'>Add To-Do</button>")
+      $('.form-style-6').append("<button id='addTodo'>Add To-Do</button>")
       $('#addTodo').on('click', () => {
         let form = $("<form method='POST'></form>").attr('action', `/task/${id}/add`).attr('id', `${listNumber+1}`);
           let description = $("<label for='description'>To-Do</label>");
@@ -124,7 +124,7 @@ $(document).ready(() => {
           .append(url).append(urlInput)
           .append(submit).append(remove);
 
-        $('.form-box').append(fullForm)
+        $('.form-style-6').append(fullForm)
 
         // Removes the new todo form by clearing it from the DOM before it is submitted
         $('#remove').on('click', () => {
@@ -134,7 +134,7 @@ $(document).ready(() => {
 
       })
 
-      $('.form-box').append("<a class='button' href='/users'>Submit</a>")
+      $('.form-style-6').append("<a class='button' href='/users'>Submit</a>")
 
 
       })
