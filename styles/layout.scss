@@ -77,7 +77,6 @@ body {
 
   /* This is the element containing all the elements on the Users Profile page  */
   .user-box {
-
     margin: 5em 10em;
 
     #username {
@@ -95,6 +94,7 @@ body {
       width: 17em;
       margin: 2em auto;
       background-color: #fffcbc;
+      float: left;
     }
 
     .item-box:hover {
@@ -104,7 +104,7 @@ body {
     /* Add List button */
     .add-list{
       width: 5em;
-      margin: 2em auto;
+      margin: 2em;
 
     }
 
